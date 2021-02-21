@@ -1,0 +1,3267 @@
+﻿<html>
+<head>
+<title>Web Console</title>
+
+<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+
+<style  type="text/css">
+html {
+	margin:0px;
+	padding:0px;
+	background-color: white;
+	//font-family:"宋体";
+	font-size:12px;
+	overflow:hidden;
+	color:#333333;
+}
+body {
+	margin:0;
+	padding:0px;
+}
+@set my-v-scrollbar
+{
+	.prev { 
+		width:14px;
+		height:14px;
+		background-image:url(03.png);
+	}
+	.next { 
+		width:14px;
+		height:14px;
+		background-image:url(04.png);
+	}
+	.prev:hover {
+		background-image:url(03.png);
+		background-position:-14 0;
+	}
+	.next:hover {
+		background-image:url(04.png);
+		background-position:-14 0;
+	}
+	.prev:active {
+		background-image:url(03.png);
+		background-position:-28 0;
+	}
+	.next:active {
+		background-image:url(04.png);
+		background-position:-28 0;
+	} 
+	.base,
+	.next-page, 
+	.prev-page { 
+	}
+	.slider { 
+		background-color:#797B82;
+	}
+	.slider:hover { 
+		background-color:#A2A4AE;
+	}
+	.slider:active { 
+		background-color:#59627C;
+	}
+	.next:disabled, .slider:disabled, 
+	.prev:disabled {
+	}
+	.base:disabled {
+	}
+	.base { width: 14px; }
+	.corner { background-color: transparent; }
+}
+
+@set my-h-scrollbar
+{
+	.prev { 
+		width:14px;
+		height:14px;
+		background-image:url(01.png);
+	}
+	.next { 
+		width:14px;
+		height:14px;
+		background-image:url(02.png);
+	}
+	.prev:hover {
+		background-image:url(01.png);
+		background-position:-14 0;
+	}
+	.next:hover {
+		background-image:url(02.png);
+		background-position:-14 0;
+	}
+	.prev:active {
+		background-image:url(01.png);
+		background-position:-28 0;
+	}
+	.next:active {
+		background-image:url(02.png);
+		background-position:-28 0;
+	} 
+	.next-page, 
+	.prev-page, .base { 
+	}
+	.slider { 
+		background-color:#797B82;
+	}
+	.slider:hover { 
+		background-color:#A2A4AE;
+	}
+	.slider:active { 
+		background-color:#59627C;
+	}
+	.next:disabled, .slider:disabled, 
+	.prev:disabled {
+	}
+	.base:disabled {
+	}
+	.base { height: 14px; }
+}
+div#left_treeview > widget {
+	vertical-scrollbar: my-v-scrollbar;
+	horizontal-scrollbar: my-h-scrollbar;
+}
+@set gb-v-scrollbar
+{
+	.prev { 
+		width:13px;
+		height:13px;
+		background-image:url(05.png);
+	}
+	.next { 
+		width:13px;
+		height:13px;
+		background-image:url(06.png);
+	}
+	.prev:hover {
+		background-image:url(05.png);
+		background-position:-13 0;
+	}
+	.next:hover {
+		background-image:url(06.png);
+		background-position:-13 0;
+	}
+	.prev:active {
+		background-image:url(05.png);
+		background-position:-26 0;
+	}
+	.next:active {
+		background-image:url(06.png);
+		background-position:-26 0;
+	} 
+	.base,
+	.next-page, 
+	.prev-page { 
+	}
+	.slider { 
+		background-color:#797B82;
+	}
+	.slider:hover { 
+		background-color:#A2A4AE;
+	}
+	.slider:active { 
+		background-color:#59627C;
+	}
+	.next:disabled, .slider:disabled, 
+	.prev:disabled {
+	}
+	.base:disabled {
+	}
+	.base { width: 13px; }
+	.corner { background-color: transparent; }
+}
+
+@set gb-h-scrollbar
+{
+	.prev { 
+		width:13px;
+		height:13px;
+		background-image:url(07.png);
+	}
+	.next { 
+		width:13px;
+		height:13px;
+		background-image:url(08.png);
+	}
+	.prev:hover {
+		background-image:url(07.png);
+		background-position:-13 0;
+	}
+	.next:hover {
+		background-image:url(08.png);
+		background-position:-13 0;
+	}
+	.prev:active {
+		background-image:url(07.png);
+		background-position:-26 0;
+	}
+	.next:active {
+		background-image:url(08.png);
+		background-position:-26 0;
+	} 
+
+	.next-page, 
+	.prev-page, .base { 
+	}
+
+	.slider { 
+		background-color:#797B82;
+	}
+	.slider:hover { 
+		background-color:#A2A4AE;
+	}
+	.slider:active { 
+		background-color:#59627C;
+	}
+
+	.next:disabled, .slider:disabled, 
+	.prev:disabled {
+	}
+	.base:disabled {
+	}  
+
+	.base { height: 13px; }
+}
+* { //textarea,table,widget[type="select"],
+	vertical-scrollbar: gb-v-scrollbar;
+	horizontal-scrollbar: gb-h-scrollbar;
+}
+
+widget[type="text"]:disabled,inputp[type="text"]:disabled,input[type="text"]:disabled {
+	background-image:none;
+	background-color:#D1D5E5;
+	foreground:none;
+}
+widget[type="password"]:disabled,input[type="password"]:disabled {
+	background-image:none;
+	background-color:#D1D5E5;
+	foreground:none;
+}
+widget[type="number"]:disabled,input[type="number"]:disabled {
+	background-image:none;
+	background-color:#D1D5E5;
+	foreground:none;
+}
+a {
+	text-decoration:underline;
+}
+a:hover {
+	color: #FF3333;
+}
+table {
+	behavior:grid column-resizer;
+	//overflow:scroll;
+	//flow: table-fixed;
+	//table-layout:fixed;
+	border-collapse:collapse;
+	font-family:"Verdana";
+	font-size:9pt;
+	border-spacing:0;
+	white-space:nowrap;
+//word-wrap:break-word;
+//word-break: break-all;
+//text-wrap:unrestricted;
+}
+th, td {
+	padding:0;
+}
+ul, ol {
+	list-style: none outside none;
+}
+//input:empty {color:#888;}
+//pre {margin:0;padding:0px;}
+//#A9AAAF 
+input {
+border:1px solid #ADADAD;
+font-size:12px;
+}
+input[type="checkbox"] {
+	border:none;
+}
+input:focus {
+	border:1px solid #4285F4;
+}
+input[type="checkbox"]:focus {
+	border:none;
+}
+input[type="text"]:disabled {
+	background-image:none;
+	background-color:#EBEBE4;
+}
+widget[type="text"], input[type="text"], widget[type="password"], input[type="password"], widget[type="decimal"], input[type="decimal"], widget[type="number"], input[type="number"] {
+context-menu:selector(menu.context);
+//border:1px solid #ADADAD;
+}
+select {
+	border:1px solid #ADADAD;
+}
+select:focus {
+	border:1px solid #4285F4;
+}
+select:disabled {
+	background-image:none;
+	background-color:#EBEBE4;
+	color:#ACA899;
+}
+textarea {
+//context-menu:selector(menu.textarea-context);
+//context-menu:selector(menu.context);
+//font-family:"宋体";
+	font-size:13px;
+	//color:#333333;
+}
+.shadow-outline {
+	outline-color:silver;
+	outline-style:glow;
+	outline-shift:3px;
+	outline-width:5px;
+	outline-offset:0px;
+}
+#win_buttons {
+    position: absolute;
+    right: 0px;
+    top: 1px;
+}
+.win_min {
+	width:15px;
+	height:15px;
+	background-image:url(min.png);
+	margin-top:10px;
+}
+.win_min:hover {
+	background-position:-15px 0px;
+}
+.win_min:active {
+	background-position:-30px 0px;
+}
+.win_max {
+	width:15px;
+	height:15px;
+	background-image:url(max.png);
+	margin-top:10px;
+	margin-left:10px;
+}
+.win_max:hover {
+	background-position:-15px 0px;
+}
+.win_max:active {
+	background-position:-30px 0px;
+}
+.win_close {
+	width:14px;
+	height:15px;
+	background-image:url(close.png);
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:10px;
+}
+.win_close:hover {
+	background-position:-14px 0px;
+}
+.win_close:active {
+	background-position:-28px 0px;
+}
+.command_menu {
+	position:absolute;
+	background-color:#F3F3F4;
+	border: 1px solid #DBDBDE;
+	display:none;
+	white-space:nowrap;
+}
+.menu_c:hover {
+	background-color:#B6BDCA;
+}
+.menu_c {
+	padding:25px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+#about_dlg {
+	display: none;
+	left:45%;
+	top:45%;
+	padding-left:10px;
+	padding-top:10px;
+}
+.mask_all {
+	background-color:#00000088;
+	position:fixed;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	right:0px;
+	display:none;
+}
+.header {
+	background-image:url(header_background.png);
+	background-repeat:repeat;
+	overflow:hidden;
+}
+.header_left_img {
+	height:92px;
+	//border-top:6px solid #1579B7;
+	background: url(header1.png) left top no-repeat;
+	//height:92px;
+	//width:935px;
+	//width:100%%;
+	//border-top:6px solid #1579B7;
+	//background-image: url(header1.png);
+}
+.header_ver_mark {
+	left:215;
+	top:37;
+	height:40px;
+	width:100px;
+	position:absolute;
+	color:#FFF
+}
+.header_control_c {
+    flow: horizontal;
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: white;
+    width: 500px;
+    left: 238px;
+    top: 24px;
+}
+.header_control_c p {
+	//padding-left:20px;
+	//padding-right:20px;
+	//padding-top:9px;
+	//padding-bottom:9px;
+	//margin:0px;
+	width:66px;
+	height:28px;
+	margin-right:30px;
+}
+.header_control_c p[con="1"] {
+	background-image:url(mon2_15.png);
+}
+.header_control_c p[con="1"]:hover {
+	background-image:url(mon2_15.png);
+	background-position:-66 0;
+}
+.header_control_c p[con="1"]:active {
+	background-image:url(mon2_15.png);
+	background-position:-132 0;
+}
+.header_control_c p[con="7"] {
+	background-image:url(mon2_17.png);
+}
+.header_control_c p[con="7"]:hover {
+	background-image:url(mon2_17.png);
+	background-position:-66 0;
+}
+.header_control_c p[con="7"]:active {
+	background-image:url(mon2_17.png);
+	background-position:-132 0;
+}
+.header_control_c p[con="3"] {
+	background-image:url(mon2_19.png);
+}
+.header_control_c p[con="3"]:hover {
+	background-image:url(mon2_19.png);
+	background-position:-66 0;
+}
+.header_control_c p[con="3"]:active {
+	background-image:url(mon2_19.png);
+	background-position:-132 0;
+}
+.header_control_c p[con="4"] {
+	background-image:url(mon2_21.png);
+}
+.header_control_c p[con="4"]:hover {
+	background-image:url(mon2_21.png);
+	background-position:-66 0;
+}
+.header_control_c p[con="4"]:active {
+	background-image:url(mon2_21.png);
+	background-position:-132 0;
+}
+.header_control_c p[con="5"] {
+	width:112px;
+	height:32px;
+	margin-top:8px;
+	margin-left:150px;
+	background-image:url(mon2_23.png);
+}
+.header_control_c p[con="5"]:hover {
+	cursor:pointer;
+	background-image:url(mon2_23.png);
+	background-position:-112 0;
+}
+.header_control_c p[con="5"]:active {
+	background-image:url(mon2_23.png);
+	background-position:-224 0;
+}
+.header_control_c p[con="6"] {
+	width:112px;
+	height:32px;
+	margin-top:8px;
+	margin-left:150px;
+	background-image:url(mon2_24.png);
+}
+.header_control_c p[con="6"]:hover {
+	cursor:pointer;
+	background-image:url(mon2_24.png);
+	background-position:-112 0;
+}
+.header_control_c p[con="6"]:active {
+	background-image:url(mon2_24.png);
+	background-position:-224 0;
+}
+a#qqchat {
+ 	//flow:horizontal;
+ 	position:relative;
+ 	//width:auto;
+ 	//marging-left:-120px;
+ 	//padding-top:10px;
+	display:block;
+	left:0px;
+ 	top:8px;
+	background-image:url(mon2_25.png);
+	width:112px;
+	height:32px;
+}
+a#qqchat:hover {
+	cursor:pointer;
+	background-image:url(mon2_25.png);
+	background-position:-112 0;
+}
+a#qqchat:active {
+	background-image:url(mon2_25.png);
+	background-position:-224 0;
+}
+
+//.header_control_c p:hover {
+//	background-image:url(hbtn.png);
+//	border-radius:10px;
+//	cursor:pointer;
+//	width:auto;
+//}
+ //加手势, 要带position:
+//.qq_class {
+//	flow:horizontal;
+//	position:relative;
+//	width:auto;
+//	marging-left:20px;
+//	padding-top:10px;
+//	left:30px;
+//	top:-5px;
+//}
+//.qq_class a:hover {
+//	cursor:pointer;
+//}
+.slide_class {
+}
+.slide_class p:hover {
+	cursor:pointer;
+}
+.main_foot {
+	background-color:#313643;
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	height:20px;
+	line-height:20px;
+	font-family:"Microsoft YaHei",微软雅黑;
+	font-size:13px;
+}
+
+#left_treeview 
+{
+	background:url(menu_bg.jpg) #313643 no-repeat left top;
+	position:absolute;
+	//width:231px;
+	width:223px;
+	top:92px;
+	bottom:20px;
+	padding-top:10px;
+	padding-left:8px;
+	overflow:auto;
+	color:#D4D0D7;
+}
+
+#left_treeview options:checked > text {
+	background-color:#555C6E;
+}
+#left_treeview option:checked {
+	background-color:#555C6E;
+}
+#left_treeview option[ckstate = "online"]:checked {
+	background-color:#A46E28;
+}
+#left_treeview img + span {
+	color:#D4D0D7;
+}
+
+//#left_treeview li // {
+//context-menu:selector(menu#treeview-menu);
+//height:20px;
+//}
+menu {
+	font-size:12px;
+	background-color:white;
+	padding:0px;
+}
+menu li {
+	height:15px;
+	padding-top:6px;
+}
+menu li:hover {
+	background-color:#316AC5;
+	color:white;
+}
+.right_main {
+	border-right:5px solid #313643;
+	margin-bottom:0px;
+	margin-top:0px;
+	margin-right:2px;
+	position:absolute;
+	top:92px;
+	left:223px;
+	bottom:20px;
+	right:0px;
+	overflow:hidden;
+	background-color:#E8E8E8;
+}
+.tab_w_c {
+	//margin-top:1px;
+	flow: horizontal;
+	background-color:#FAF9F7;
+}
+//.tab_w_c > p {
+//}
+#tab_w1 {
+	background-color:#EBD5B7;
+}
+.tab {
+	width:auto;
+	white-space:nowrap;
+	margin:0px;
+	padding-left:10px;
+	padding-right:10px;
+	//padding-top:8px;
+	//padding-bottom:8px;
+	text-align:center;
+	vertical-align:middle;
+	height:36px;
+	//border:#3483C7 solid 1px;
+	//border-left-color:white;
+	font-size:12px;
+	//background-color:white white #62B8E9 #62B8E9;
+	//background-image:url(tabbg.png);
+	//background-color:#EBD5B7;
+	//background-position:0 1;
+}
+.tab:hover {
+	//background-color:#F9DDB4;
+}
+.tab:active {
+	background-color:#ED9E37;
+}
+.tab_enter {
+	//background-color:#62B8E9 #62B8E9 white white;
+	//background-image:url(tabebg.png);
+	//background-color:white;
+	background-color:#ED9E37;
+}
+.tab_sub {
+	//margin:0px;
+	//margin-right:1px;
+	//padding-left:15px;
+	//padding-right:15px;
+	//background-color:#FAF9F7;
+	//width:auto;
+	width:auto;
+	margin:0px;
+	white-space:nowrap;
+	padding-left:10px;
+	padding-right:10px;
+	text-align:center;
+	vertical-align:middle;
+	height:32px;
+	//padding-top:8px;
+	//padding-bottom:8px;
+	font-size:12px;
+}
+.tab_sub_e {
+	background-image: url(tabsub.jpg);
+	background-repeat: repeat-x;
+}
+ //.page_select img {margin-left:42px;cursor:pointer;}
+.page_select {
+	margin:0px;
+	padding:0px;
+	position:absolute;
+	bottom:12px;
+	left:10px;
+	right:20px;
+}
+.btn {
+	white-space:nowrap;
+	background-color:#798095;
+	//border:#76858C 1px solid;
+	//border-radius:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:5px;
+	padding-bottom:6px;
+	display:inline-block;
+	color:white;
+	font-size:12.5px;
+	width:auto;
+	margin-left:10px;
+}
+.btn:hover {
+	cursor:pointer;
+	background-color:#A2A9BC;
+}
+.btn:active {
+	background-color:#626B87;
+}
+.btn:disabled {
+	background-color:#C3C3C3;
+}
+.setbtn {
+	white-space:nowrap;
+	background-color:#5A627D;
+	border:#AEB3C3 1px solid;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:5px;
+	padding-bottom:6px;
+	display:inline-block;
+	color:white;
+	font-size:12.5px;
+	width:auto;
+	margin-left:10px;
+}
+.setbtn:hover {
+	background-color:#737C99;
+	border:#C5C9D5 1px solid;
+}
+.setbtn:active {
+	background-color:#4A526F;
+	border:#A7ADBF 1px solid;
+}
+.btnfp {
+	white-space:nowrap;
+	//background-color:#798095;
+	//border:#76858C 1px solid;
+	//border-radius:2px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:5px;
+	padding-bottom:6px;
+	display:inline-block;
+	color:white;
+	font-size:12.5px;
+	width:auto;
+	margin-left:10px;
+}
+.btnfp:hover {
+	cursor:pointer;
+}
+.btn_exp {
+	display:inline-block;
+	background-color:#F6CE9B;
+	color:#715733;
+	width:58px;
+	height:25px;
+	margin-left:8px;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:normal;
+}
+.btn_exp:hover {
+	background-color:#F9DDB4;
+}
+.btn_exp:active {
+	background-color:#EFAB64;
+}
+.t_btn {
+	position:absolute;
+	top:4px;
+	right:20px;
+	//float:right;
+	font-weight:normal;
+	//right:20px;
+	//line-height:36px;
+	//vertical-align:middle;
+	//flow:horizontal;
+}
+.pn {
+	display:inline-block;
+	width:30px;
+	text-align:center;
+}
+.dialog {
+	position:absolute;
+	background-color:white;
+	//border-radius:2px;
+	//border:1px solid rgb(35,112,184);
+	width:auto;
+	behavior:hotdlg;
+}
+.dialog_header {
+	//cursor:move;
+	flow:horizontal;
+	background-color:#5A627D;
+}
+.dialog_header_t {
+	position:absolute;
+	font-weight:bold;
+	left:10px;
+	top:8px;
+	color:rgb(50,50,50);
+}
+.dialog_h1 {
+	width:668px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dialog_h2 {
+	width:700px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dlg_msgbox {
+	width:326px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dlg_msgboxah {
+	width:372px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dlg_msgboxag {
+	width:316px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dlg_input {
+	width:268px;
+	height:36px;
+	background-color:#5A627D;
+	vertical-align:middle;
+	color:white;
+	padding-left:10px;
+}
+.dialog_close {
+	width:14px;
+	height:15px;
+	right:0px;
+	cursor:default;
+	background-image:url(close.png);
+	margin-right:10px;
+}
+.dialog_close:hover {
+	background-image:url(close.png);
+	background-position:-14 0;
+}
+.dialog_close:active {
+	background-image:url(close.png);
+	background-position:-28 0;
+}
+.dialog_tab_w {
+	//background-image:url(tab_bg1.png);
+	height:36px;
+	border-top:1px solid white;
+	background-color:#DADCE2;
+}
+.dialog_tab {
+	float:left;
+	margin:0px;
+	height:36px;
+	//margin-left:4px;
+	//border-radius:5px 5px 0 0;
+	border-right:1px solid white;
+	width:auto;
+	//padding-top:6px;
+	//padding-bottom:5px;
+	//margin-top:2px;
+	padding-left:10px;
+	padding-right:10px;
+	//background-image:url(tab_bg2.png);
+	//background-position:0 1px;
+	color:#535353;
+	background-color:#DADCE2;
+	vertical-align:middle;
+}
+.dialog_tab_e {
+	//background-image:url(tab_bg3.png);
+	//background-color:#DADCE2;
+	//font-weight:bold;
+	//background-position:0 1px;
+	//border-bottom:1px solid white;
+	background-color:#9BA3BD;
+}
+.dialog_tab:hover {
+	//background-image:url(tab_bg3.png);
+}
+.dialog_box1 {
+	border:1px solid #D3D3D3;
+	//border:1px solid #ADADAD;
+	//margin-bottom:50px;
+}
+.dialog_box {
+	border:1px solid #D3D3D3;
+	//border:1px solid #ADADAD;
+	margin-bottom:20px;
+}
+.dialog_table_box {
+	height:200px;
+	border:1px solid #D3D3D3;
+	width:388px;
+}
+.dialog_bottom {
+	height:36px;
+	bottom:0px;
+	background-color:#DADCE2;
+	flow: horizontal;
+}
+.control_box {
+	position:absolute;
+	left:8px;
+	bottom:16px;
+}
+.line1 {
+	margin-left:16px;
+	margin-top:10px;
+	margin-bottom:12px;
+}
+.table_data_info {
+	//background-image:url(tab_bg1.png);
+	background-color:#5A627D;
+	height:33px;
+	vertical-align:middle;
+	padding-left:10px;
+	font-size:12px;
+	font-weight:bold;
+	border-bottom:1px solid #E5E5E5;
+	overflow:hidden;
+	color:white;
+}
+.table_data {
+	position:absolute;
+	padding:0px;
+	left:18px;
+	top:45px;
+	right:18px;
+	bottom:54px;
+	//border:1px solid #D3D3D3;
+	//background-color:#F9F9F9;
+}
+.table_data_half {
+	position:absolute;
+	padding:0px;
+	left:18px;
+	right:18px;
+	bottom:54px;
+	background-color:white;
+	padding:0px;
+	margin:0px;
+}
+p.content_header {
+	position:absolute;
+	padding:0px;
+	left:18px;
+	right:18px;
+	height:33px;
+	line-height:33px;
+	color:white;
+	background-color:#5A627D;
+	vertical-align:middle;
+	font-size:12px;
+	font-weight:bold;
+	margin-left:18px;
+	padding-left:10px;
+}
+.textarea_chatdata {
+	overflow:auto;
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	border-style:solid;
+	border-color:#FFFFFF;
+	width:99%;
+	height:99%;
+	padding-left:10px;
+	font-family:"宋体";
+	font-size:12px;
+}
+.textarea_recordcontainer {
+	width:100%%;
+	height:100%%;
+	border-color:black;
+}
+.textarea_recorddata {
+	position:absolute;
+	padding:0px;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	overflow:auto;
+	background:none;
+	width:100%%;
+	height:100%%;
+	padding: 5px 5px 5px 8px;
+	margin-top:10px;
+	font-family:"宋体";
+	font-size:12px;
+}
+.table_full {
+	position:absolute;
+	top:68px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	overflow:auto;
+	background-color:white;
+	padding:0px; 
+	margin:0px;
+}
+.table_full td {
+	//margin-left:5px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	white-space:nowrap;
+	padding:0px; 
+	margin:0px;
+}
+.table_data_header {
+	background-color:#D7D9E2;
+	border-bottom:1px solid #E5E5E5;
+	margin:0px;
+	padding:0px;
+	background-color:#D7D9E2;
+	color:#5A627D;
+	flow: horizontal;
+	height:33px;
+	//background-image:url(table_data_th.png);
+	//overflow:hidden;
+	line-height:33px;
+	vertical-align:middle;
+}
+.table_data_header > p:first-child {
+	margin:0px;
+	padding:0px;
+	display:inline-block;
+	text-align:center;
+	white-space:nowrap;
+}
+.table_data_header p {
+	margin:0px;
+	padding:0px;
+	padding-left:1px;
+	background-color:#D7D9E2;
+	display:inline-block;
+	text-align:center;
+	white-space:nowrap;
+}
+.table_data td {
+	//padding:3px;
+	border-right:1px solid #E5E5E5;
+}
+.table_data tr {
+	height:24px;
+	border-bottom:1px solid #E5E5E5;
+}
+.table_data tr:nth-child(odd) {
+	//background-color: #D2E8FF;
+	//background-color:#D6EFFF;
+}
+.table_data td:first-child {
+	//background-color: #F9F9F9;
+	//background-color:white;
+	//border-bottom:1px solid #E5E5E5;
+}
+.table_data tr:hover {
+	//background-color: #92D1FF;
+	//background-color:#94D6FF;
+	background-color:#FFF7EC;
+}
+.table_data_filefilter {
+	border:1px solid #D3D3D3;
+	table-layout:fixed;
+	word-break:keep-all;
+	white-space:nowrap;
+	border-collapse:collapse;
+	//background-color:#F9F9F9;
+}
+.table_data_filefilter p {
+	padding:0px;
+}
+.table_data_filefilter td {
+	padding-top:3px;
+	padding-bottom:3px;
+	border-right:1px solid #E5E5E5;
+	overflow-x:hidden
+}
+.table_data_filefilter tr {
+	border-bottom:1px solid #E5E5E5;
+}
+.table_data_filefilter tr:nth-child(odd) {
+	//background-color: #D2E8FF;
+	//background-color:#D6EFFF;
+	//background-color:rgb(210,232,255);
+}
+.table_data_filefilter tr:hover {
+	//background-color: #92D1FF;
+	background-color:#FFF7EC;
+}
+.filefilter:disabled {
+	background-color:#EBEBE4;
+	color:gray;
+}
+.filefilter_edit_icon {
+	height:14px;
+	width:14px;
+	padding:0px;
+	position:relative;
+	left:-8px;
+	top:-2px;
+	background-image:url(filefilter_edit_icon.png)
+}
+.table_config {
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-COLLAPSE: collapse;
+}
+.table_config td {
+	padding:6px;
+}
+.table_screen {
+	margin-top:20px;
+	margin-left:20px;
+}
+.table_screen td {
+	width:190px;
+	padding:10px;
+}
+.table_screen_c {
+	width:980;
+	overflow:auto;
+}
+.table_screen_c div {
+	text-align:center;
+	float:left;
+	margin:10px;
+	margin-top:36px;
+	max-width:230px;
+	max-height:200px;
+	overflow:hidden;
+}
+.table_screen_c img {
+	//width:max-intrinsic;
+	//height:max-intrinsic;
+	//max-width:200px;
+	max-height:130px;
+}
+.table_screen span {
+	//position:relative;
+	//bottom:0px;
+	//margin:auto;
+	white-space:nowrap;
+	background-color:white;
+	//padding-top:5px;
+	//padding-left:38px;
+	//padding-right:100px;
+}
+.tree2 {
+	margin-top:10px;
+	//margin-bottom:20px;
+	height:360px;
+	width:95%;
+	background-image:none;
+	overflow:auto;
+}
+.tree_apply_multi {
+	margin-top:10px;
+	//margin-bottom:20px;
+	height:360px;
+	width:672px;
+	background-image:none;
+	overflow:auto;
+}
+.tree {
+ background-image:none;
+ //background-color:window;
+ height:*;
+ width:199px;
+ overflow:auto;
+ font-size:12px;
+}
+options option {
+	margin-left:10px;
+}
+.tree options // containers 
+{
+ accept-drop: selector(.tree option, .tree options);
+ drop:append;
+  /*background-color:window;*/
+  list-marker-style:dashed;
+}
+
+.tree:drag-over, 
+.tree options:drag-over // dragged over container state 
+{
+ background:#88b7e3;	// current target highlightion
+}
+.tree input {
+	display:none;
+}
+.tree option, 
+.tree options {
+	draggable:only-move;	// we support only reordering here  
+	context-menu:selector(#treeview-menu);
+}
+
+.tree option:moving, 
+.tree options:moving {
+ opacity:0.5;
+}
+
+.tree option:drag-source, 
+.tree options:drag-source {
+ color:graytext;
+}
+
+/* tree line support */
+
+
+.tree options:has-children > * // all options with more than one child (that is caption) 
+{
+ display: list-item;
+ //list-style-type: tree-line;
+ //outline-color:red;
+ //height:20px;
+}
+options:not(:has-children) {
+ foreground-image:url(theme:tree-view-glyph-open);
+}
+.tree options > *:first-child {
+	font-weight:bold;
+}
+.tree options {
+	margin-left:5px;
+	padding-left:15px;
+}
+.tree options >:first-child {
+	margin-left:0;
+}
+.tree_m {
+	background-image:none;
+	overflow:auto;
+}
+.tree_m button {
+	height:14px;
+	margin:0px;
+	padding-top:1px;
+	padding-bottom:1px;
+}
+.trans {
+	opacity:1.0;
+}
+.trans[ease="linear"] {
+	opacity:0.0;
+	transition: opacity(linear, 500ms);
+}
+#control_computer {
+	height:200px;
+ //border:1px solid #D3D3D3;
+	width:740px;
+}
+#control_computer_table {
+	margin-top: 2px;
+	margin-left: 15px;
+}
+ //高级设置窗口 
+#settings_lbl_modify_pwd_success {
+ color: #0080FF;
+}
+
+        
+progress.lizhuo
+{
+vertical-align:middle;
+behavior:progress; 
+background-repeat:expand;
+background-image:url(progress_bkg.png);
+background-position:5px 5px 5px 5px; /*left top right bottom offsets*/
+
+height: 9px;
+width: 400px;
+padding: 0px;
+
+foreground-repeat:expand;  
+foreground-position:5px 5px 5px 5px; /*left top right bottom offsets*/
+foreground-image:url(progress_download.png);  
+position:absolute;
+margin-left:-180;
+margin-top:500px;
+color:#000;
+display:none;
+}
+a#aboutQQ {
+	display:inline-block;
+	width:81px;
+	height:23px;
+	background-image:url(QQ.png);
+}
+a#aboutQQ:hover{
+
+}
+a#aboutQQ:active {
+
+}
+progress.showprogress {
+	behavior:progress;
+	vertical-align:middle;
+	height:17px; 
+	width:125px;
+	margin-left:15px;
+}
+</style>
+<!---Start Of Error Message--->	
+<script>
+alert("⚠️ Fail To Connect To The Backend Server。");
+</script>
+<!---End Of Error Message--->	
+</head>
+
+<body id="body">
+
+<div id="header" class="header">
+  <div id="header_left_img" class="header_left_img"  > </div>
+</div>
+<div id="header_control" class="header_control_c">
+  <p con="1"><!-- 扫 描 --></p>
+  <p id="nav_settings" con="7" dlg="dlg_settings">&nbsp;</p>
+  <p con="4" dlg="dlg_about"><!-- 关 于 --></p>
+</div>
+<div class="main_foot">
+  <div style="float:left;margin-top:2px;margin-left:10px;color:white"> Online: <span id="login_user_count">0</span> </div>
+  <!-- <div style="float:left;margin-top:2px;margin-left:116px;color:white"> 连接类型:<span id="bottom_lic_ver">外网</span> </div>
+  <div style="float:left;margin-top:2px;margin-left:116px;color:white"> 连接类型: 外网</div>
+  <div style="float:left;margin-top:2px;margin-left:80px;color:white"> IP:<span id="bottom_local_ip">10.0.0.0</span> </div>
+  <div style="float:left;margin-top:2px;margin-left:80px;width:300;color:white"> <span style="">当前流量</span> 收到:<span id="traffic_rev">10</span>kb/s &nbsp;&nbsp; 发送:<span id="traffic_send">10</span>kb/s </div>
+  -->
+  <div style="float:right;margin-top:2px;margin-right:10px;color:white">Stark Industries 1940-2021 </div>
+
+</div>
+<menu .context style="width:108px;">
+<li	command="behavior:edit:undo"> 撤消 </li>
+<hr/>
+<li	command="behavior:edit:cut"> 剪切 </li>
+<li	command="behavior:edit:copy"> 复制 </li>
+<li	command="behavior:edit:paste"> 粘贴 </li>
+<hr/>
+<li	command="behavior:edit:selectall"> 全选 </li>
+</menu>
+<div id="left_main"> <menu .context id="treeview-menu" style="width:108px;">
+  <li id="add_group">添加分组</li>
+  <li>移动到 <menu id="group_menu" style="width:auto;"> </menu> </li>
+  <hr/>
+  <li id="add_server" dlg="dlg_connect_server">添加新主机</li>
+  <li id="rename">重命名主机</li>
+  <li id="delete">删除主机</li>
+  <hr/>
+  <li id="update_server" dlg="dlg_update">更新程序</li>
+  
+  <li id="uninstall_server" dlg="dlg_uninstall">远程卸载</li>
+  </menu> 
+  <!-- <li id="post_exit">程序重启</li> --> 
+  <!--<li id="disconnect_server" dlg="dlg_uninstall">断开连接</li>-->
+  
+  <input id="input_tmp" type="text" size="14" style="display:none;border:none;margin:0px;padding:none;" />
+  <div id="left_treeview">
+    <widget class="tree" type="select"  >
+      <options expanded="">
+        <input type="checkbox"/>
+        <img src="g.png"/><span i="all_users">所有用户</span>
+        <options expanded="" id="group_default">
+          <input type="checkbox" />
+          <img src="g.png" /><span>未分组</span></options>
+        <options>
+          <input type="checkbox" />
+          <img src="g.png" /><span>研发部</span></options>
+        <options>
+          <input type="checkbox" />
+          <img src="g.png" /><span>销售部</span></options>
+        <options>
+          <input type="checkbox" />
+          <img src="g.png" /><span>行政部</span></options>
+        <options>
+          <input type="checkbox" />
+          <img src="g.png" /><span>财务部</span></options>
+      </options>
+    </widget>
+  </div>
+</div>
+
+<div class="right_main">
+  <div id="tab_w1" class="tab_w_c" tab_c="tab" tab_e="tab tab_enter">
+    <p id="tab_user_info" lenther="1" class="tab" >设备信息</p>  <!-- style="border-left-color:#3483C7;" -->
+    <p id="tab_history" lenther="1" class="tab">历史记录</p>
+    <p id="tab_behavaudit" lenther="1" class="tab">行为审计</p>
+    <p id="tab_system" lenther="1" class="tab">系统信息</p>
+    <p id="tab_flux" lenther="1" class="tab">实时流量</p>
+    <p id="tab_control" lenther="2" class="tab">系统命令</p>
+    <p id="tab_file" lenther="2" class="tab">文件管理</p>
+    <p id="tab_screenspy" lenther="1" class="tab">屏幕监控</p>
+    <p id="tab_screenwall" lenther="1" class="tab">多屏幕监控</p>
+    <p id="tab_cam" lenther="1" class="tab">摄像头监控</p>
+    <p id="tab_camwall" lenther="1" class="tab">多摄像头监控</p>
+    <p id="tab_setting" lenther="1" class="tab">常规设置</p>
+    <p id="tab_limit" lenther="2" class="tab">限制设置</p>
+  </div>
+  
+  <div id="tab_content">
+    <!-- <div style="text-align:center;margin-top:50px;">  <img src="bg.png"/>  </div> -->
+	<div style="flow:horizontal;">
+      <table class="table_config" style="margin-left:30px;margin-top:30px;width:369px;height:333px;overflow-x:hidden;background-color:white;">
+        <tbody>
+          <tr style="width:100%;background-color:#5A627D;">
+            <td style="width:90px;font-weight:bold;color:white;">设备信息</td> 
+            <!-- border-bottom:
+	 1px solid black; -->
+			<td></td>
+          </tr>
+          <tr>
+            <td>设备名称：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>设备IP：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>最后上线时间：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr style="width:100%;background-color:#5A627D;">
+            <td style="font-weight:bold;color:white;">计算机信息</td>
+			<td></td>
+          </tr>
+          <tr>
+            <td>计算机名称：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>操作系统：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>MAC地址：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>摄像头：</td>
+            <td><span ></span></td>
+          </tr>
+          <tr>
+            <td>版本日期：</td>
+            <td><span ></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <img src="bg.png" width="602" height="337" style="
+margin-left:20px;margin-top:30px;"/> </div>
+  </div>
+  
+  <div id="tab_hidden_pool" style="display:none;">
+    <div id="tab_user_info_c" style="flow:horizontal;">
+      <table class="table_config" style="margin-left:30px;margin-top:30px;width:369px;height:333px;overflow-x:hidden;background-color:white;">
+        <tbody>
+          <tr style="width:100%;background-color:#5A627D;">
+            <td style="width:90px;font-weight:bold;color:white;">设备信息</td> <!-- border-bottom:
+	 1px solid black; -->
+			<td></td>
+          </tr>
+          <tr>
+            <td>设备名称：</td>
+            <td><span id="employee_name">无</span></td>
+          </tr>
+          <tr>
+            <td>设备IP：</td>
+            <td><span id="employee_ip">无</span></td>
+          </tr>
+          <tr>
+            <td>最后上线时间：</td>
+            <td><span id="login_time">无</span></td>
+          </tr>
+          <tr style="width:100%;background-color:#5A627D;">
+            <td style="font-weight:bold;color:white;">计算机信息</td>
+			<td></td>
+          </tr>
+          <tr>
+            <td>计算机名称：</td>
+            <td><span id="pc_name">无</span></td>
+          </tr>
+          <tr>
+            <td>操作系统：</td>
+            <td><span id="os_name">无</span></td>
+          </tr>
+          <tr>
+            <td>MAC地址：</td>
+            <td><span id="mac_address">无</span></td>
+          </tr>
+          <tr>
+            <td>摄像头：</td>
+            <td><span id="has_camera">无</span></td>
+          </tr>
+          <tr>
+            <td>版本日期：</td>
+            <td><span id="server_built_date">无</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <img id="user_info_img" src="" width="602" height="337" style="
+margin-left:20px;margin-top:30px;"/> </div>
+    <div id="tab_system_c">
+      <div id="tab_w6" class="tab_w_c" tab_c="tab_sub" tab_e="tab_sub tab_sub_e">
+        <p id="tab_process" class="tab_sub">进程列表</p>
+        <p id="tab_service" class="tab_sub">服务信息</p>
+        <p id="tab_software" class="tab_sub">软件列表</p>
+        <p id="tab_hardware" class="tab_sub">硬件列表</p>
+      </div>
+    
+      <div> </div>
+      
+      <div style="display:none">
+        <div id="tab_process_c">
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">进程列表</div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:142px;">Pid</p>
+              <p style="width:243px;">名称</p>
+              <p style="width:394px;">路径</p>
+              <p>描述</p>
+            </div>
+            <table id="table_process" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="control_box"> <span id="btn_stop_process" class="btn">结束进程</span> </div>
+        </div>
+        
+        <div id="tab_service_c" class="table_data" style="top:86px;">
+          <div class="table_data_info">服务信息</div>
+          <div class="table_data_header">
+            <p style="width:36px;"></p>
+            <p style="width:190px;">服务名称</p>
+            <p style="width:270px;">显示名称</p>
+            <p style="width:400px;">路径</p>
+            <p style="width:160px;">描述</p>
+            <p style="width:40px;">启动类型</p>
+          </div>
+          <table id="table_service" class="table_full" style="text-wrap:none;">
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="tab_hardware_c" class="table_data" style="top:86px;">
+          <div class="table_data_info">硬件列表</div>
+          <div class="table_data_header">
+            <p style="width:36px;"></p>
+            <p style="width:230px;">类型</p>
+            <p style="width:450px;">名称</p>
+          </div>
+          <table id="table_hardware" class="table_full">
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="tab_software_c" class="table_data" style="top:86px;">
+          <div class="table_data_info">软件列表</div>
+          <div class="table_data_header">
+            <p style="width:36px;"></p>
+            <p style="width:520px;">已安装的软件</p>
+          </div>
+          <table id="table_software" class="table_full">
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_behavaudit_c">
+      <div id="tab_w7" class="tab_w_c" tab_show="rec_app" tab_c="tab_sub" tab_e="tab_sub tab_sub_e">
+        <p id="rec_app" lenther="1" class="tab_sub">程序运行</p>
+        <p id="rec_remaintime" lenther="1" class="tab_sub">停留时间</p>
+        <p id="rec_startend" lenther="1" class="tab_sub">开关机记录</p>
+        <p id="rec_website" lenther="1" class="tab_sub">网址记录</p>
+        <p id="rec_flowmonitor" lenther="1" class="tab_sub">流量记录</p>
+      </div>
+      <div> </div>
+      <div style="display:none">
+        <div id="rec_app_c" >
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">程序运行记录 
+              <!-- <span id="table_app_filter" class="btn_exp">筛选</span>
+<span id="table_app_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_app_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_app_dt" type="date" />
+                <span id="table_app_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:200px;">窗口标题</p>
+              <p style="width:300px;">程序路径</p>
+              <p style="width:150px;">启动时间</p>
+              <p style="width:150px;">结束时间</p>
+              <p style="width:100px;">运行时间</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            <table id="table_app" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_app_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> 
+            <!-- <img src="page_prev.png" con="5" />
+<img src="page_next.png" con="6" /> --> 
+            <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> <span class="btn" id="btn_report">统计报告</span> </div>
+        </div>
+		
+		<div id="rec_remaintime_c" >
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">停留时间统计 
+              <!-- <span id="table_app_filter" class="btn_exp">筛选</span>
+<span id="table_app_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_remaintime_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_remaintime_dt" type="date" />
+                <span id="table_remaintime_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:150px;">日期</p>
+              <p style="width:200px;">进程名</p>
+              <p style="width:200px;">名称</p>
+              <p style="width:150px;">停留时长</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            <table id="table_remaintime" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_app_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> 
+            <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span>  </div>
+        </div>
+		
+        <div id="rec_startend_c" >
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">开关机记录 
+              <!-- <span id="table_startend_filter" class="btn_exp">筛选</span>
+<span id="table_startend_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_power_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_power_dt" type="date" />
+                <span id="table_power_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:300px;">开机时间</p>
+              <p style="width:300px;">关机时间</p>
+              <p style="width:100px;">运行时间</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            <table id="table_power" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_power_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> 
+            <!-- <img src="page_prev.png" con="5" />
+<img src="page_next.png" con="6" /> --> 
+            <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        <div id="rec_website_c">
+          <div class="table_data" style="top:86px;bottom:320px;">
+            <div class="table_data_info">网页记录 
+              <!-- <span id="table_website_filter" class="btn_exp">筛选</span>
+<span id="table_website_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_website_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_website_dt" type="date" />
+                <span id="table_website_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:300px;">网页标题</p>
+              <p style="width:390px;">访问网址</p>
+              <p style="width:150px;">访问时间</p>
+              <p style="width:150px;">截图文件名</p>
+              <!--  <p style="width:60px;">用户名</p> --> 
+            </div>
+            <table class="table_full" id="table_website" style="" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div id="table_website_c" style="height:221px;overflow:auto;text-align:center;"><img/> </div>
+          </div>
+          <div id="table_website_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        <div id="rec_flowmonitor_c" >
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">只显示当日使用流量最高的前10个软件 
+              <!-- <span id="table_startend_filter" class="btn_exp">筛选</span>
+<span id="table_startend_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_flowmonitor_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_flowmonitor_dt" type="date" />
+                <span id="table_flowmonitor_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:180px;">日期</p>
+              <p style="width:180px;">进程名</p>
+              <p style="width:100px;">上传流量</p>
+              <p style="width:100px;">下载流量</p>
+              <p style="width:100px;">总流量</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            
+            <table id="table_flowmonitor" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_flowmonitor_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> 
+            <!-- <img src="page_prev.png" con="5" />
+<img src="page_next.png" con="6" /> --> 
+            <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_history_c">
+      <div id="tab_w3" class="tab_w_c" tab_show="rec_screenshot" tab_c="tab_sub" tab_e="tab_sub tab_sub_e"> 
+        <!-- <p id="rec_key" class="tab_sub">键盘记录</p>-->
+        <p id="rec_screenshot" lenther="1" class="tab_sub">屏幕记录</p>
+        <p id="rec_chat" lenther="1" class="tab_sub">聊天记录</p>
+        <!-- <p id="rec_chatshot" lenther="1" class="tab_sub">聊天截图</p> -->
+        <p id="rec_key" lenther="1" class="tab_sub">键盘记录</p>
+        <p id="rec_clipboard" lenther="1" class="tab_sub">剪贴板记录</p>
+        <p id="rec_file" lenther="1" class="tab_sub">文件操作</p>
+		<p id="rec_fileupload" lenther="3" class="tab_sub">文件外发记录</p>
+        <p id="rec_usbdrive" lenther="3" class="tab_sub">U盘使用</p>
+        <p id="rec_email" lenther="2" class="tab_sub">邮件接收</p>
+        <p id="rec_emails" lenther="2" class="tab_sub">邮件发送</p>
+        <p id="rec_warning" lenther="2" class="tab_sub">报警记录</p>
+        <!-- <p id="rec_filesend" class="tab_sub">文件外发</p> --> 
+      </div>
+      <div> </div>
+      <div style="display:none">
+        <div id="rec_email_c">
+          <div class="table_data" style="top:86px;bottom:320px;">
+            <div class="table_data_info">邮件接收
+              <div class="t_btn"> 开始日期：
+                <input id="table_email_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_email_dt" type="date" />
+                <span id="table_email_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:170px;">发送时间</p>
+              <p style="width:190px;">发送方</p>
+              <p style="width:150px;">接收方</p>
+              <p style="width:190px;">主题</p>
+              <p style="width:120px;">邮件服务器</p>
+            </div>
+            <table class="table_full" id="table_email" style="" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div id="table_email_c" style="height:221px;overflow:auto;"> </div>
+          </div>
+          <div id="table_email_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_emails_c">
+          <div class="table_data" style="top:86px;bottom:320px;">
+            <div class="table_data_info">邮件发送
+              <div class="t_btn"> 开始日期：
+                <input id="table_emails_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_emails_dt" type="date" />
+                <span id="table_emails_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:170px;">时间</p>
+              <p style="width:190px;">发送方</p>
+              <p style="width:150px;">接收方</p>
+              <p style="width:190px;">主题</p>
+              <p style="width:120px;">邮件服务器</p>
+            </div>
+            <table class="table_full" id="table_emails" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div id="table_emails_c" style="height:221px;overflow:auto;"> </div>
+          </div>
+          <div id="table_emails_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_file_c">
+          <div class="table_data" style="top:86px;bottom:320px;">
+            <div class="table_data_info">文件操作(记录文件的"创建/复制/删除/移动"操作) 
+              <!-- <span id="table_file_filter" class="btn_exp">筛选</span>
+<span id="table_file_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_file_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_file_dt" type="date" />
+                <span id="table_file_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:100px;">操作类型</p>
+              <p style="width:300px;">源(文件/路径)</p>
+              <p style="width:300px;">目标(文件/路径)</p>
+              <p style="width:150px;">操作时间</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            <table class="table_full" id="table_file" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div class="textarea_recordcontainer" id="p_filelog_textarea"  style="height:221px;">
+              <textarea id="groupby_all_file_log"  class="textarea_recorddata" readonly="readonly" style="background:none;"></textarea>
+            </div>
+          </div>
+          <div id="table_file_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+		
+        <div id="rec_fileupload_c">
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">文件外发记录(监控各种软件的文件外发记录,请先在"限制设置>文件外发记录"中开启) 
+              <!-- <span id="table_file_filter" class="btn_exp">筛选</span>
+<span id="table_file_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_fileupload_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_fileupload_dt" type="date" />
+                <span id="table_fileupload_export" class="btn_exp">导出</span> 
+			  </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:150px;">操作时间</p>
+              <p style="width:150px;">标题</p>
+              <p style="width:100px;">进程名</p>
+              <p style="width:300px;">文件路径</p>
+              <p style="width:75px;">是否为文件夹</p>
+              <p style="width:75px;">是否被阻止</p>
+              <p style="width:100px;">用户名</p>
+            </div>
+            <table class="table_full" id="table_fileupload" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_fileupload_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> 
+		  </div>
+        </div>
+        
+        <div id="rec_filesend_c">
+          <div class="table_data" style="top:60px;">
+            <div class="table_data_info">文件外发</div>
+            <div class="table_data_header">
+              <p style="width:40px;"></p>
+              <p style="width:80px;">操作类型</p>
+              <p style="width:500px;">文件名</p>
+              <p style="width:80px;">文件大小</p>
+              <p style="width:150px;">操作时间</p>
+            </div>
+            <table class="table_full" id="table_filesend" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="table_filesend_control" style="position:absolute;bottom:12px;" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span>0</span>页&nbsp;&nbsp;<span>&nbsp;&nbsp;当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_clipboard_c">
+          <div class="table_data" style="top:86px;">
+            <div class="table_data_info">剪贴板记录 
+              <!-- <span id="table_clipboard_filter" class="btn_exp">筛选</span>
+<span id="table_clipboard_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_clipboard_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_clipboard_dt" type="date" />
+                <span id="table_clipboard_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:600px;">内容</p>
+              <p style="width:150px;">记录时间</p>
+            </div>
+            <table class="table_full" id="table_clipboard" style="padding:0px;margin:0px;">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="table_clipboard_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_warning_c">
+          <div class="table_data" style="top:86px;bottom:320px;">
+            <div class="table_data_info">报警记录 
+              <!-- <span id="table_warning_filter" class="btn_exp">筛选</span>
+<span id="table_warning_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_warning_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_warning_dt" type="date" />
+                <span id="table_warning_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:50px;">操作</p>
+              <p style="width:300px;">文件路径</p>
+              <p style="width:260px;">窗口标题</p>
+              <p style="width:150px;">记录时间</p>              
+              <p style="width:150px;">报警截图文件</p>
+            </div>
+            <table class="table_full" id="table_warning" >
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div id="table_warning_c" style="height:221px;overflow:auto;text-align:center;"><img/> </div>
+          </div>
+          <div id="table_warning_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_screenshot_c">
+        <div style="height:10px;"></div>
+        <div style="margin-left:15px;">
+		选择截图类型：<select id="screenshot_type" style="width:100px;">
+		<option con="1" id="screenshot_type1" keyword="">所有</option>
+		<option con="2" id="screenshot_type2" keyword="qq|weChat">聊天</option>
+		<option con="3" id="screenshot_type3" keyword="email|邮件|邮箱|outlook|foxmail">邮件</option>
+		<option con="4" id="screenshot_type4" keyword="论坛">论坛</option>
+		<option con="5" id="screenshot_type5" keyword="微博|weibo">微博</option>
+		<option con="6" id="screenshot_type6" keyword="求职|招聘|人才">招聘求职&nbsp;&nbsp;</option>
+		<option con="7" id="screenshot_type7" keyword="百度|搜索|谷歌|google">搜索</option>
+		<option con="8" id="screenshot_type8" keyword="电影">电影</option>
+		<option con="9" id="screenshot_type9" keyword="游戏|单机">游戏</option>
+		<option con="10" id="screenshot_type10" keyword="网购|淘宝|京东|购物">购物</option>
+		<option con="11" id="screenshot_type11" keyword="下载">下载</option>
+		<option con="12" id="screenshot_type12" keyword="qq.exe">QQ聊天</option>
+		<option con="13" id="screenshot_type13" keyword="AliIM.exe">阿里旺旺</option>
+		<option con="14" id="screenshot_type14" keyword="Skype.exe">SKYPE</option>
+		<option con="15" id="screenshot_type15" keyword="weChat.exe">微信</option>
+        
+		</select>
+		搜索标题：<input type="text" id="screenshot_text" />
+		<span id="screenshot_search" class="btn">搜索</span>
+        </div>
+          <div id="slide_c" style="display:none;position:fixed;left:0px;top:0px;bottom:0px;
+right:0px;background-color:#000000AA;text-align:center;" >
+            <div id="slide_img_w" style="position:relative;margin:auto;"> <img id="slide_wait" src="wait_mini.gif" style="position:absolute;margin:auto;margin-top:300px;"/>
+              <progress id="slide_progress" class="lizhuo" maxvalue="100" value="0"/>
+			  <p id="slide_img" > <img width="100%%" /> </p>
+              <div id="slide_prev" class="slide_class" >
+                <p style="position:absolute;left:-60px;top:300px;
+background-image:url(slide.png);
+height: 50px;background-position: 0px -290px;width: 50px;"></p>
+              </div>
+              <div id="slide_next" class="slide_class" >
+                <p style="position:absolute;right:-60px;top:300px;
+background-image:url(slide.png);
+height: 50px;background-position: 0px -230px;width: 50px;"></p>
+              </div>
+              <div id="slide_close" class="slide_class">
+                <p style="position:absolute;right:-50px;top:20px;
+background-image:url(close_slide.png);
+background-position: center;
+background-repeat: no-repeat;
+height: 40px;width: 40px;"></p>
+              </div>
+              <div id="slide_save" class="slide_class" title="保存">
+                <p style="position:absolute; right:-80px; top:680px;
+background-image:url(save_slide2.png);
+background-position: center;
+background-repeat: no-repeat;
+height: 64px;width: 64px;"></p>
+              </div>
+              
+              <!-- <div id="slide_close" style="position:absolute;right:-25px;top:-10px;
+background-image:url(close_slide.png);
+height: 30px;width: 30px;">
+</div> --> 
+              
+            </div>
+          </div>
+          
+          <div id="table_screenshot" class="table_screen" style="background-color:white;">
+            <div id="table_screenshot_c" class="table_screen_c">
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+              <div><img /><br/>
+                <span>&nbsp;</span><br/>
+                <span>&nbsp;</span></div>
+            </div>
+          </div>
+          
+          <div id="table_screenshot_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> 
+            <!-- <span id="table_screenshot_filter" class="btn" >筛选</span>
+<span id="table_screenshot_export" class="btn" >导出</span> --> 
+            
+            <span style="margin-left:20px;">开始日期：</span>
+            <input id="table_screenshot_df" type="date" />
+            &nbsp;&nbsp;结束日期：
+            <input id="table_screenshot_dt" type="date" />
+            <span id="table_screenshot_export" class="btn">导出</span> 
+			<progress id="table_screenshot_progress" class="showprogress" maxvalue="100" value="0"></progress> 
+		  </div>
+        </div>
+       
+        <div id="rec_key_c">
+          <div class="table_data" style="top:86px;bottom:202px;">
+            <div class="table_data_info">键盘记录 
+              <!-- <span id="table_key_filter" class="btn_exp">筛选</span>
+<span id="table_key_export" class="btn_exp">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_key_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_key_dt" type="date" />
+                <span id="table_key_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:300px;">窗口标题</p>
+              <p style="width:300px;">内容</p>
+              <p style="width:150px;">时间</p>
+              <p style="width:400px;">程序路径</p>
+              <!--  <p style="width:120px;">用户名</p> --> 
+            </div>
+            <table class="table_full" id="table_key" style="">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+		  <p class="content_header" style="bottom:157px;">记录内容</p>
+          <div class="table_data_half">
+            <!-- <div class="table_data_info">记录内容</div> -->
+            <!--<div style="height:188px;overflow:auto;"></div> --><div id="table_key_c" style="behavior:htmlarea;height:104px;overflow:auto;padding-left:10px;"></div></div><div id="table_key_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span><input type="text" value="1" size="5"/><span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div></div><div id="rec_usbdrive_c" ><div class="table_data" style="top:86px;bottom:320px;"><div class="table_data_info">U盘使用记录 --> 
+              <!-- <span id="table_usbdrive_filter" class="btn_exp">筛选</span>
+<span id="table_usbdrive_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_usbdrive_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_usbdrive_dt" type="date" />
+                <span id="table_usbdrive_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+			  <p style="width:100px;">事件名称</p>
+			  <p style="width:300px;">插拔盘符/源(文件/路径)</p>
+			  <p style="width:300px;">目标(文件/路径)</p>
+			  <p style="width:150px;">操作时间</p>
+			  <p style="width:100px;">用户名</p>
+            </div>
+            <table id="table_usbdrive" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td nowrap>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div class="textarea_recordcontainer" id="p_usblog_textarea"  style="border:0px solid #D3D3D3;height:221px;">
+              <textarea id="groupby_all_usb_log" readonly="readonly" class="textarea_recorddata" ></textarea>
+            </div>
+          </div>
+          <div id="table_usbdrive_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+        
+        <div id="rec_chat_c" > 
+        <div style="height:10px;"></div>
+        <div style="margin-left:18px;">
+        选择聊天记录：<select id="chat_type" style="margin-left:8px;width:100px;">
+            <option con="5">QQ</option>
+            <option con="7">微信</option>
+            <option con="2">阿里旺旺&nbsp;&nbsp;</option>
+            <option con="3">Skype</option>
+          </select>
+          </div>
+            <div class="table_data" style="top:112px;bottom:320px;">
+        
+            <div class="table_data_info">聊天记录 
+              <!-- <span id="table_chat_filter" class="btn_exp">筛选</span>
+<span id="table_chat_export" class="btn_exp" style="right:20px;">导出</span> -->
+              <div class="t_btn"> 开始日期：
+                <input id="table_chat_df" type="date" />
+                &nbsp;&nbsp;结束日期：
+                <input id="table_chat_dt" type="date" />
+                <span id="table_chat_export" class="btn_exp">导出</span> </div>
+            </div>
+            <div class="table_data_header">
+              <p style="width:36px;"></p>
+              <p style="width:260px;">窗口标题</p>
+              <p style="width:290px;">内容</p>
+              <p style="width:150px;">时间</p>
+              <p style="width:200px;">程序路径</p>
+            </div>
+            <table id="table_chat" class="table_full">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+		  <p class="content_header" style="bottom:275px;">记录内容</p>
+          <div class="table_data_half">
+            <div class="textarea_recordcontainer" id="p_chatlog_textarea" style="border:0px solid #D3D3D3;height:221px;"><!-- 聊天消息: -->
+              <textarea id="groupby_all_chat_log" class="textarea_recorddata" readonly="readonly"></textarea>
+            </div>
+          </div>
+          <div id="table_chat_control" class="page_select"> <span>&nbsp;&nbsp;总页数</span><span class="pn">0</span>页&nbsp;&nbsp;<span>当前第</span>
+            <input type="text" value="1" size="5"/>
+            <span>页</span> <span class="btn" con="5" style="margin-left:20px;">上一页</span> <span class="btn" con="6">下一页</span> </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_control_c"
+style="padding-left:80px;padding-top:16px;">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h6" class="dialog_header dialog_h2" style="width:740px;">系统命令
+          <!-- <p class="dialog_header_t"></p> -->
+          <!-- <img src="dialog_h6.png" />  -->
+		</div>
+        <p style="margin-left:10px">请先选择需要接收命令的用户,再点击下方的命令按钮</p>
+        <widget id="tree_control" type="select" style="margin-top:10px;margin-left:15px;width:95%;height:240px;border:1px solid #999"> </widget>
+        <div id="control_computer" style="flow:horizontal;">
+          <div id="control_computer_table"> <br/>
+            <div style="float:left;">
+              <p style="margin-left:5px">执行系统命令:</p>
+              <span class="btn"  con="1" style="margin-left:10px;">关机</span> <span class="btn" con="2">重启</span> <span class="btn" con="3">注销</span> <br/>
+              <p style="margin-left:5px">向用户广播消息:</p>
+              <textarea name="aaaaaa" id="control_message" cols="45" rows="4" style="margin-left:10px;"></textarea>
+              <p style="margin-left:5px"><span class="btn" con="5" style="margin-left:5px">发送消息</span></p>
+			  <p></p>
+			</div>
+			<div style="float:left;margin-left:10px;">
+              <p style="margin-left:5px">发送文件(文件默认保存在用户电脑桌面):</p>
+			  <input type="text" id="control_filepath" readonly style="margin-left:10px;width:250px;" /> <span class="btn" con="6" >选择文件</span> <br />
+              <button type="checkbox" id="fs_enable" style="margin:5px 10px;" >发送成功后自动运行</button> <br /> <!-- style="margin-left:2px;padding:2px 0px;" -->
+			  <span class="btn" con="4" style="margin-left:10px;">立即发送</span>
+			  <span id="userremark" style="margin-left:10px;"></span>
+<!--               <p style="margin-left:5px">打开文件(需要被控端的路径和填写路径一致):</p>
+			  <span style="margin-left:10px;">路径:</span> <input type="text" id="control_sfilepath" style="margin-left:2px;width:270px" /><br />
+			  <span class="btn" con="7" style="margin-left:10px;margin-top:8px;">发送命令</span> -->
+			</div>
+            <!-- <p></p> -->
+            <!-- <p style="width:auto;margin-left:40%; color:#F9F"></p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_screenwall_c">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h3" class="dialog_header dialog_h1" >选择需要监控的用户(可以同时监控多台电脑的屏幕)
+          <!-- <p class="dialog_header_t" ></p> -->
+          </div> <!-- <img src="dialog_h3.png" />  -->
+        <!-- <div id="tree_select" style="padding-left:20px;">
+</div> -->
+        <widget id="tree_select" class="tree2" type="select" style="margin-left:20px;"> </widget>
+        <p style="margin-left:20px;">注意：最多同时监控16台电脑的屏幕</p>
+        <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+          <p id="start_screen_wall" class="btn" style="width:auto;">开始</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_camwall_c">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h5" class="dialog_header dialog_h1" >选择需要监控的用户
+          <!-- <p class="dialog_header_t"></p> -->
+          </div> <!-- <img src="dialog_h3.png" /> -->
+        <widget id="select_cam" class="tree2" type="select" style="margin-left:20px;"> </widget>
+        <p style="margin-left:20px;">注意：最多同时监控16台电脑的摄像头</p>
+        <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+          <p id="start_cam_wall" class="btn" style="width:auto;">开始</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_flux_c">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h4" class="dialog_header dialog_h1" >选择用户
+          <!-- <p class="dialog_header_t" ></p> -->
+          <!-- <img src="dialog_h3.png" /> -->
+<!--           <div id="dlg_close4" class="dialog_close" style="margin:auto;top:36%;display:none;" dlg="dlg_apply_multi"></div> -->
+        </div>
+        <widget id="tree_select2" class="tree2" type="select" style="margin-left:20px;"> </widget>
+        <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+          <p id="start_flux_mon" class="btn" style="text-align:center;margin:0 auto;margin-top:5px;width:50px;">开始</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="tab_setting_c">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h1" class="dialog_header dialog_h1" >常规设置</div> <!-- <img src="dialog_h.png" /> -->
+        <div id="tab_w2" class="dialog_tab_w" tab_show="screen_config" tab_c="dialog_tab" tab_e="dialog_tab dialog_tab_e">
+          <p id="screen_config" lenther="1" class="dialog_tab dialog_tab_e">屏幕记录</p>
+          <p id="ScreenRecord_config" lenther="3" class="dialog_tab">屏幕录制</p>
+          <p id="autoclean_config" lenther="1" class="dialog_tab">自动清理</p>
+          <p id="other_config" lenther="1" class="dialog_tab">其他配置</p>
+        </div>
+        <div style="height:200px;">
+          <table id="screen_config_c"   class="table_config" 
+style="padding-left:15px;padding-top:12px;">
+            <!-- <tr>
+     <td>启用屏幕操作监控：</td>
+     <td><input id="screen_spy_on" type="checkbox" name="radio" checked="checked" /></td>
+   </tr> -->
+            <tr>
+              <td>定时截屏时间间隔(秒):
+                <input id="screenshot" type=number value="" name="screenshot" style="text-align: left"/></td>
+            </tr>
+            <tr>
+              <td>*软件默认开启智能截图, 当鼠标和键盘有操作时都会自动截图</td>
+            </tr>
+            <tr>
+              <td><button id="scrconfig_chk_active_window_capture_only" type="checkbox" style="margin-left:0px;">只截取当前的活动窗口的屏幕(否则全屏截取)</button></td>
+            </tr>
+            
+            <!--<tr>
+	    <td><button id="scrconfig_chk_auto_run" type="checkbox" style="margin-left:0px;">按下键盘的回车键时自动截图</button></td>
+	</tr> -->
+          </table>
+        </div>
+        
+        <div style="display:none;">
+          <table id="ScreenRecord_config_c"   class="table_config" style="padding-left:15px;padding-top:12px;width:500px;">
+            <tr>
+              <td><button type="checkbox" id="ScreenRecord_config">启用屏幕录制功能</button>
+            </tr>
+            <div class="dialog_box1" id="ScreenRecord_config_div" style="margin-left:20px;Height:200px;Width:auto;padding-top:0px">
+              <table class="table_config"  style="padding-left:15px;padding-top:12px;">
+                <tr>
+                  <td><button id="autojudge" type="checkbox" >智能录屏模式:计算机无操作超过60秒时自动暂停录制</button></td>
+                </tr>
+                <tr>
+                  <td>存放录像共享文件夹路径:
+                    <input id="video_path" type="text" name="video_path" att="path" value="" style="text-align: left"/></td>
+                  <td style="white-space:nowrap;">如：\\192.168.1.200\video</td>
+                  <!-- <span id="video_path_browse" class="btn" dig="dig_video_path_browse" value="浏览">浏览</span></td> --> 
+                </tr>
+                <!-- <tr>
+     <td>共享文件夹密码:</td>
+     <td><input id="video_password" type="password" name="video_password" value="" style="text-align: left"/></td>
+   </tr> -->
+                <tr>
+                  <td>自动清理多少天前的录像:
+                    <input id="autoclean_video" type="text" name="autoclean_video" value="" style="text-align: left"/></td>
+                </tr>
+                <tr>
+                  <td>视频录制质量：
+                    <select id="video_quality" style="margin-left:8px;width:100px;">
+                      <option con="1" value="1">极好</option>
+                      <option con="2" value="2">良好</option>
+                      <option con="3" selected="selected" value="3">一般</option>
+                      <option con="4" value="4">较差</option>
+                    </select></td>
+                </tr>
+              </table>
+            </div>
+            </td>
+            
+            </tr>
+            
+          </table>
+          <table id="other_config_c"   class="table_config" style="padding-left:15px;padding-top:12px;">
+            <tr>
+              <td><button id="forbid_md_name" type="checkbox" width="300">禁止修改计算机名</button></td>
+            </tr>
+            <tr>
+              <td><button id="forbid_md_ip" type="checkbox" >禁止修改IP</button></td>
+            </tr>
+          </table>
+          <table id="autoclean_config_c"   class="table_config"
+ style="padding-left:15px;padding-top:12px;">
+            <tr>
+              <td>自动清理
+                <input id="autoclean" type=number width="35" name="autoclean" value="" style="text-align: left"/>
+                天前的记录</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+          <p id="apply_config_cur" class="btn" style="width:auto;">应 用</p> <!-- margin-left:40%; -->
+          <p id="apply_config_more" class="btn" style="width:auto;margin-left:6px;">应用到多用户</p>
+        </div>
+        <div style="display:none;height:18px;width:0%;background-color:gray" id="config_notice"></div>
+      </div>
+    </div>
+    
+    <div id="tab_limit_c">
+      <div class="dialog" style="left:50px;top:50px;">
+        <div id="dlg_h2" class="dialog_header dialog_h1" >限制设置</div> <!-- <img src="dialog_h2.png" /> -->
+        <div id="tab_w4" class="dialog_tab_w" tab_show="limit_process" tab_c="dialog_tab" tab_e="dialog_tab dialog_tab_e">
+          <p id="limit_process" lenther="2" class="dialog_tab">程序限制</p>
+          <p id="limit_net" lenther="2" class="dialog_tab">网页访问限制</p>
+          <p id="limit_QQ" lenther="2" class="dialog_tab">QQ白名单</p>
+          <p id="limit_warning" lenther="2" class="dialog_tab">报警设置</p>
+          <p id="limit_usb" lenther="3" class="dialog_tab">U盘限制</p>
+          <p id="limit_fileFilter" lenther="3" class="dialog_tab">文件防泄密保护</p>
+		  <p id="limit_fileupload" lenther="3" class="dialog_tab">文件外发记录</p>
+          
+          <!--
+<p id="limit_hardware" class="dialog_tab">其他硬件限制</p>
+
+<p id="limit_port" class="dialog_tab">端口过滤</p>--> 
+        </div>
+        <div>
+          <div id="limit_process_c">
+            <div class="line1">
+              <button type="checkbox" id="lp_enable">禁止运行以下被选中的软件</button>
+            </div>
+            <div id="lp_black_div" style="flow:horizontal">
+              <widget type="select" class="tree_m dialog_box" 
+style="height:220px;width:450px;margin-left:20px;" id="process_select"> </widget>
+              
+              <!-- <widget  type="tree" class="tree_m"
+style="height:220px;width:450px;" id="proc_block" checkmarks>
+</widget> -->
+              <div style="width:30px;"> <span class="btn" id="lp_add_process" dlg="dlg_add_process">添加...</span> <br/>
+                <br/>
+                <span class="btn" id="lp_select_all">全选</span> </div>
+            </div>
+            <div class="dialog_box" id="lp_time" style="width:425px;margin-left:20px;margin-bottom:20px;
+border-radius:5px;padding:15px;"> 限制规则在以下时间段内有效:
+              <p><span>上午：&nbsp;</span>
+                <input id="lpfrom1" type="time" value="8:00:00" />
+                <span style="margin-left:16px;margin-right:16px;">-></span>
+                <input id="lpto1" type="time" value="12:00:00"/>
+                <button id="lpinvoke6" type="checkbox" style="margin-left:30px;">包括星期六</button>
+              </p
+>
+              <p> <span>下午：&nbsp;</span>
+                <input id="lpfrom2" type="time" value="13:00:00" />
+                <span style="margin-left:16px;margin-right:16px;">-></span>
+                <input id="lpto2" type="time" value="18:00:00" />
+                <button id="lpinvoke7" type="checkbox" style="margin-left:30px;">包括星期天</button>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div style="display:none;">
+          <div id="limit_usb_c" style="height:300px;padding:16px;padding-top:10px;">
+            <div>
+              <button type="checkbox" id="lu_block_cdrom">禁用光驱(禁用后若需恢复光驱需重启电脑)</button>
+            </div>
+            <div style="margin-top:6px;">
+              <button type="checkbox" id="lu_read_only">只读模式，禁止往U盘拷贝文件(重启电脑后生效)</button>
+              <!-- <button type="checkbox" id="lu_white_list">启用U盘白名单(只有认证过的U盘才能使用)</button> --> 
+            </div>
+            <div style="margin-top:6px;">
+              <button type="checkbox" id="lu_white_list">启用U盘白名单(不在白名单内的所有U盘/移动硬盘都将被自动屏蔽)：</button>
+            </div>
+            <div id="lu_white_div" style="margin-top:8px;flow:horizontal;width:auto;"> 
+              <!-- <div style="width:90px;">
+<button type="checkbox" id="lu_white_list">启用U盘白名单：</button>
+</div> -->
+              <div style="margin-left:23px;">
+                <p>U盘硬件码</p>
+                <input id="lu_text" type="text" style="width:288px;"/>
+                <br/>
+                <p>授权U盘硬件码列表</p>
+                <select id="lu_list" size="8" style="width:290px;">
+                </select>
+              </div>
+              <div>
+                <p>&nbsp;</p>
+                <span class="btn" id="lu_add">添加U盘</span><br/>
+                <br/>
+                <span class="btn" id="lu_delete">删除</span> </div>
+            </div>
+            <p style="margin-left:16px;">*请点击下方按钮使用获取U盘硬件码</p>
+            <div style="margin-left:13px;"> <span  class="btn" id="lu_USBtool" >打开U盘硬件码获取工具</span><br/>
+              <br/>
+            </div>
+            <!-- <p><button type="checkbox">禁止移动设备拷贝文件</button></p> --> 
+          </div>
+          
+          <div id="limit_QQ_c" style="height:300px;">
+            <div class="line1">
+              <button type="checkbox" id="qq_wl_enable">启用QQ白名单-只允许指定的QQ号码登录(*该功能仅限正式版使用))</button>
+            </div>
+            <div class="dialog_box" id="qq_wl_div" style="margin-left:20px;Height:200px;Width:500px;padding-top:8px">
+              <div>
+                <div class="line1" style="width:auto">
+                  <input id = "qq_wl_input" type="number" novalue="输入要加入白名单的QQ号" style="width:380px;text-align:left" />
+                  <span class="btn" id="qq_wl_add">添加</span> 
+				</div>
+                <div class="line1" >
+                  <div class="dialog_table_div" style="flow:horizontal;width:auto;"> 
+                    <!-- <div style="width:382px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键字</div> -->
+                    <div>
+                      <select id="qq_wl_list" size="8" style="width:382px;height:180px;margin-top:8px;">
+                      </select>
+                    </div>
+                    <div style="width:80px;margin-top:8px;margin-left:4px"> <span class="btn" id="qq_wl_delete">删除</span> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="limit_port_c" style="height:300px;">
+            <div class="line1">
+              <button type="checkbox" id="port_filter_enable">启用端口过滤</button>
+            </div>
+            <div class="dialog_box" id="port_filter_div" style="margin-left:20px;Height:200px;Width:553px;padding-top:8px">
+              <div>
+                <div class="line1" >
+                  <div id="port_filter_edit_rule_box" class="dialog_box" style="height:224px;width:450px;position:absolute;top:120px;left:120px;background-color:white;display:none">
+                    <div class="dialog_box" style="height:128px;width:416px;margin-top:8px;margin-left:8px;padding:8px">
+                      <div style="margin:4px"> <span>规则名称：</span>
+                        <input size="40" id="port_filter_edit_rule_name">
+                        </input>
+                      </div>
+                      <div nowrap style="margin:4px;margin-top:8px">
+                        <p style="margin:4px;margin-left:0px;float:left;">端口范围：</p>
+                        <input size="5" id="port_filter_edit_rule_ports_min" style="float:left;margin:4px;margin-top:0px" type="number">
+                        </input>
+                        <p style="margin:4px;float:left;">-</p>
+                        <input size="5" id="port_filter_edit_rule_ports_max" style="float:left;margin:4px;margin-top:0px" type="number">
+                        </input>
+                        <p style="margin:4px;">（单个端口此项留空）</p>
+                      </div>
+                      <div nowrap style="margin:4px;margin-bottom:0px">
+                        <p> 协议：
+                          <button type="checkbox" id="port_filter_edit_rule_tcp">tcp</button>
+                          <button type="checkbox" id="port_filter_edit_rule_udp">udp</button>
+                        </p>
+                        <p>
+                          <button type="checkbox" id="port_filter_edit_rule_conin">限制传入连接</button>
+                          <button type="checkbox" id="port_filter_edit_rule_conout">限制传出连接</button>
+                        </p>
+                      </div>
+                    </div>
+                    <div style="position:absolute;left:144px;bottom:12px;"> <span id="btn_edit_port_rule_ok" class="btn">确定</span> <span id="btn_edit_port_rule_cancel" class="btn">取消</span> </div>
+                  </div>
+                  <div class="dialog_box" id="port_filter_rule_div" style="width:520px;height:180px;border:none;margin:0px;padding:0px;">
+                    <div class="table_data_filefilter filefilter" style="margin:0px;padding:0px;">
+                      <div class="table_data_header">
+                        <p style="width:32px;">启用</p>
+                        <p style="width:80px;">规则名称</p>
+                        <p style="width:180px;">端口</p>
+                        <p style="width:80px;">协议</p>
+                        <p style="width:120px;">方向</p>
+                        <p>编辑</p>
+                      </div>
+                      <table id="table_port_filter_rules"   style="overflow-y:auto;Height:280px;padding:0px;">
+                        <tbody>
+                          <!-- <tr><td style="width:32px"><input type="checkbox"></input></td><td style="width:80px">浏览网页</td><td style="width:180px">80;8080</td><td style="width:80px">tcp</td><td style="width:120px">out</td><td><span class="btn filefilter_edit_icon"></td></tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <div style="padding-top:16px;padding-left:16px"> <span class="btn" id="port_filter_add">添加新规则</span> <span class="btn" id="port_filter_delete">删除规则</span> <span class="btn" id="port_filter_import">导入规则列表</span> <span class="btn" id="port_filter_export">导出规则列表</span> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="limit_fileFilter_c" style="">
+            <div class="line1">
+              <button type="checkbox" id="fileFilter_enable">启用文件防泄密保护，防止文件通过任何途径发送出去</button>
+              <span class="btn" id="fileFilter_import" style="position:absolute;right:40px">导入配置文件</span> <span class="btn" id="ff_add_white" style="position:absolute;right:160px">修改白名单</span> </div>
+            <div class="dialog_box" id="fileFilter_rule_div" style="margin:12px;margin-top:8px;height:400px;width:640px;border:none;">
+              <div class="table_data_filefilter filefilter" >
+                <div class="table_data_header">
+                  <p style="width:32px;">启用</p>
+                  <p style="width:90px;">规则名称</p>
+                  <p style="width:240px;">信任列表</p>
+                  <p style="width:160px;">文件类型</p>
+                   <p style="width:78px;">文件大小</p>
+                  <p>编辑</p>
+                </div>
+                <table id="table_fileFilter_rules"   style="Height:320px;overflow-y:auto;padding:0px;width:640px">
+                  <tbody>
+                    <!-- <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr> -->
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                <button type="checkbox" id="forbid_copy_to_share">禁止拷贝文件到共享文件夹</button>
+              </p>
+            </div>
+            <div id="fileFilter_edit_rule_box" class="dialog_box" style="height:188px;width:450px;position:absolute;top:120px;left:120px;background-color:white;display:none">
+              <div class="dialog_box" style="height:128px;width:416;margin-top:8px;margin-left:8px;padding:8px">
+                <div style="margin:4px"> <span>规则名称：</span>
+                  <input id="fileFilter_edit_rule_name">
+                  </input>
+                </div>
+                <div style="margin:4px"> <span>信任列表：</span>
+                  <input size="40" id="fileFilter_edit_rule_proc">
+                  </input>
+                </div>
+                <!-- <div style="margin:4px">
+<span>文件类型：</span>
+<textarea id="fileFilter_edit_rule_code" name="textfield" rows="6" cols="40"></textarea>
+</div> -->
+                <div nowrap style="margin:4px;margin-bottom:0px;display:none">
+                  <p>需要保护的文件大小范围：</p>
+                  <p style="float:left;margin-top:4px">大于</p>
+                  <p style="float:left;margin-top:0px"> &nbsp;&nbsp;
+                    <input type="number" size="12" id="fileFilter_edit_rule_size_min">
+                    </input>
+                  </p>
+                  <!-- <p style="float:left">
+<select id="fileFilter_edit_rule_size_mark_min">
+<option>字节</option>
+<option>KB</option>
+<option>MB</option>
+<option>GB</option>
+</select>
+</p> --> 
+                  <!-- <p style="float:left;margin-top:0px">
+<input type="text" size="12" id="fileFilter_edit_rule_size_max" ></input>
+</p> -->
+                  
+                  <p style="float:left;margin:4px">K</p>
+                  
+                  <!-- <select id="fileFilter_edit_rule_size_mark_min" style="float:left">
+<option value="B">字节</option>
+<option value="K">K</option>
+<option value="M">M</option>
+<option value="G">G</option>
+</select> --> 
+                  <!-- <p style="float:left">
+<select id="fileFilter_edit_rule_size_mark_max">
+<option>字节</option>
+<option>KB</option>
+<option>MB</option>
+<option>GB</option>
+</select>
+</p> --> 
+                </div>
+              </div>
+              <div style="position:absolute;left:144px;bottom:4px;"> <span id="btn_edit_rule_ok" class="btn">确定</span> <span id="btn_edit_rule_cancel" class="btn">取消</span> </div>
+            </div>
+            
+            <div id="ff_edit_white_box" class="dialog_box" style="height:188px;width:450px;
+position:absolute;top:120px;left:120px;
+background-color:white;display:none;">
+              <div class="dialog_box" style="width:416;margin:8px;padding:8px;">
+                <div style="flow:horizontal;width:auto;">
+                  <div style="margin-left:23px;">
+                    <p>白名单(白名单内的程序将不会受规则限制)</p>
+                    <input id="ff_white_text" type="text" style="width:256px;"/>
+                    <br/>
+                    <br/>
+                    <select id="ff_white_list" size="8" style="width:256px;">
+                    </select>
+                  </div>
+                  <div>
+                    <p>&nbsp;</p>
+                    <span class="btn" id="ff_white_add">添加</span><br/>
+                    <br/>
+                    <span class="btn" id="ff_white_del">删除</span> </div>
+                </div>
+              </div>
+              <div style="margin-left:144px;margin-bottom:8px;"> <span id="ff_add_white_ok" class="btn">确定</span> <span id="ff_add_white_cancel" class="btn" dlg="ff_edit_white_box">取消</span> </div>
+            </div>
+          </div>
+          
+		  <div id="limit_fileupload_c" style="height:320px">
+			<div style="width:50%;float:left;">
+				<div style="border:1px solid #D3D3D3;margin-top:5px;margin-bottom:5px;margin-left:4px;margin-right:2px;height:300px;">
+					<div style="margin-left:13px;margin-top:5px;margin-bottom:5px;">
+						<button type="checkbox" id="fupload_procmon_enable">启用文件外发监控(只监控以下进程)</button>
+					</div>
+					<div class="dialog_box" id="fupload_procmon" style="margin:12px;margin-top:8px;border:none;">
+						<div style="float:left;">
+							<div style="margin-bottom:8px;">
+								<label for="fupload_procmon_keyword">进程名:</label> 
+								<input type="text" size="20" id="fupload_procmon_keyword" style="width:165px;" ></input>
+							</div>
+							<div class="table_data_filefilter">
+								<div class="table_data_header">
+								  <p style="width:36px;"></p>
+								  <p style="width:auto;">进程名</p>
+								</div>
+								<table id="table_fupload_procmon_rules" style="Height:180px;overflow-y:auto;padding:0px;width:216px;">
+								  <tbody>
+								  </tbody>
+								</table>
+							</div>
+						</div>
+						<div style="float:right;">
+							<span class="btn" id="fupload_procmon_add" style="margin-top:3px;">添加</span><br/>
+							<span class="btn" id="fupload_procmon_del" style="margin-top:10px;">删除</span><br/>
+<!-- 							<span class="btn" id="fupload_procmon_mod" style="margin-top:10px;">修改</span><br/>
+							<span class="btn" id="fupload_procmon_clear" style="margin-top:10px;">清空</span><br/> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="width:50%;float:right;">
+				<div style="border:1px solid #D3D3D3;margin-top:5px;margin-bottom:5px;margin-left:2px;margin-right:4px;height:300px;">
+					<div style="margin-left:13px;margin-top:5px;margin-bottom:5px;">
+						<button type="checkbox" id="fupload_forbidproc_enable">禁止程序上传文件</button>
+					</div>
+					<div class="dialog_box" id="fupload_forbidproc" style="border:1px solid #D3D3D3;margin:12px;margin-top:8px;border:none;">
+						<div style="float:left;">
+							<div style="margin-bottom:8px;">
+								<label for="fupload_forbidproc_keyword">进程名:</label> 
+								<input type="text" size="20" id="fupload_forbidproc_keyword" style="width:165px;" ></input>
+							</div>
+							<div class="table_data_filefilter">
+								<div class="table_data_header">
+								  <p style="width:36px;"></p>
+								  <p style="width:auto;" >进程名</p>
+								</div>
+								<table id="table_fupload_forbidproc_rules" style="Height:180px;overflow-y:auto;padding:0px;width:216px;">
+								  <tbody>
+								  </tbody>
+								</table>
+							</div>
+						</div>
+						<div style="float:right;">
+							<span class="btn" id="fupload_forbidproc_add" style="margin-top:3px;">添加</span><br/>
+							<span class="btn" id="fupload_forbidproc_del" style="margin-top:10px;">删除</span><br/>
+<!-- 							<span class="btn" id="fupload_forbidproc_mod" style="margin-top:10px;">修改</span><br/>
+							<span class="btn" id="fupload_forbidproc_clear" style="margin-top:10px;">清空</span><br/> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  
+          <div id="limit_warning_c" style="width:600px">
+            <div class="line1">
+              <button type="checkbox" id="warning_enable">启用报警</button>
+            </div>
+            <div class="dialog_box" id="warning_div" style="margin-left:20px;Height:200px">
+              <div class="line1">
+                <button type="checkbox" id="uins_enable">插入U盘报警</button>
+                <button type="checkbox"id="ucopy_enable">复制文件到U盘报警</button>
+                </br>
+                <button type="checkbox"id="hardware_enable">硬件变动自动报警(当电脑硬件型号有变化时报警)</button>
+              </div>
+              <div class="line1">
+                <button type="checkbox" id="kw_enable">启用敏感关键词设置(当窗口标题出现敏感词或键盘输入了敏感词时自动报警)</button>
+              </div>
+              <div id="kw_div">
+                <div class="line1" style="width:auto">
+                  <input id = "kw_input" type="text" style="width:380px"/>
+                  <span class="btn" id="kw_add">添加</span> </div>
+                <div class="line1" >
+                  <div class="dialog_table_div" style="flow:horizontal;width:auto;"> 
+                    <!-- <div style="width:382px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键字</div> -->
+                    <div>
+                      <select id="kw_list" size="8" style="width:382px;height:180px;margin-top:8px;">
+                      </select>
+                    </div>
+                    <div style="width:80px;margin-top:8px;margin-left:4px"> <span class="btn" id="kw_delete">删除</span>
+                      <p style="margin-left:8px">*当检测到活动窗口标题包含以下关键字时将会触发报警。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="limit_net_c" style="margin:20px;margin-top:16px;height:430px;overflow-x:hidden;overflow-y:auto;">
+            <div>
+              <button type="checkbox" id="ln_white" style="padding-top:0px;padding-bottom:0px;">启用网址白名单(只能访问白名单里的网址,其他所有的网站将无法访问)：</button>
+            </div>
+            <div id="ln_white_div" style="flow:horizontal;width:auto;margin-left:23px;margin-top:10px;margin-bottom:10px;">
+              <div>
+                <input id="ln_white_text" type="text" style="width:288px;"/>
+                <br/>
+                <br/>
+                <select id="ln_white_list" size="6" style="width:290px;">
+                </select>
+              </div>
+              <div style="width:auto;"> <span class="btn" id="ln_white_add">添加</span><br/>
+                <br/>
+                <span class="btn" id="ln_white_del">删除</span><br/>
+                <p style="width:250px;margin-left:15px"> *支持顶级域名及二级域名匹配，如输入顶级域名baidu.com则允许访问tieba.baidu.com，baike.baidu.com等所有包含baidu.com的网址 </p>
+              </div>
+            </div>
+            <button type="checkbox" id="ln_black" style="margin-bottom:0px;">启用网址黑名单(黑名单内的所有网站将无法访问)：</button>
+            <div id="ln_black_div" style="flow:horizontal;width:auto;margin-left:23px;margin-top:2px;margin-bottom:10px;">
+              <div style="margin-left:0px;">
+                <p>黑名单网址库:</p>
+                <widget type="select" class="tree_m dialog_box" 
+style="height:120px;width:220px;" id="ln_select"> </widget>
+              </div>
+              <div style="margin-left:16px;">
+                <p>自定义网址黑名单:</p>
+                <input id="ln_black_text" type="text" style="width:248px;"/>
+                <select id="ln_black_list" size="6" style="width:250px;margin-top:10px">
+                </select>
+              </div>
+              <div style="width:auto;margin-top: 35px;"> <span class="btn" id="ln_black_add">添加</span><br/>
+                <br/>
+                <span class="btn" id="ln_black_del">删除</span><br/>
+              </div>
+            </div>
+            
+            <div class="dialog_box" id="ln_time" style="width:425px;margin-left:20px;margin-bottom:0px;
+border-radius:5px;padding:5px;"> 限制规则在以下时间段内有效:
+              <p><span>上午：&nbsp;</span>
+                <input id="lnfrom1" type="time" value="8:00:00" />
+                <span style="margin-left:16px;margin-right:16px;">-></span>
+                <input id="lnto1" type="time" value="12:00:00"/>
+                <button id="lninvoke6" type="checkbox" style="margin-left:30px;">包括星期六</button>
+              </p
+>
+              <p> <span>下午：&nbsp;</span>
+                <input id="lnfrom2" type="time" value="13:00:00" />
+                <span style="margin-left:16px;margin-right:16px;">-></span>
+                <input id="lnto2" type="time" value="18:00:00" />
+                <button id="lninvoke7" type="checkbox" style="margin-left:30px;">包括星期天</button>
+              </p
+>
+            </div>
+          </div>
+          
+          <div id="limit_hardware_c">
+            <p>
+              <button type="checkbox">禁用以下设备</button>
+            </p>
+            <button type="checkbox" >软驱</button>
+            <br/>
+            <button type="checkbox" >光驱</button>
+            <br/>
+            <button type="checkbox" >调制解调器</button>
+            <br/>
+            <button type="checkbox" >打印机</button>
+            <br/>
+            <button type="checkbox" >SCSI和RAID控制器</button>
+            <br/>
+          </div>
+        </div>
+        
+        <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+          <p id="apply_limit" class="btn" style="width:auto;">应  用</p>
+          <p id="apply_lm_begin"class="btn" style="width:auto;margin-left:6px;">应用到多用户</p>
+        </div>
+        <!-- <div style="display:none;height:18px;width:0%;background-color:gray" id="limit_notice"></div> --> 
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="g_mask" class="mask_all" ></div>
+ --> 
+<!-- <div class="dialog shadow-outline" style="border:none;border-radius:3px;margin:auto;top:36%;padding:20px;">
+<select size="8" style="width:300px;">
+<option>abc</option>
+<option>abc</option>
+<option>abc</option>
+</select>
+</div> -->
+
+<div id="dlg_add_process" focus="process_name" class="dialog" style="display:none;margin:auto;top:36%;">
+  <div class="dialog_header dlg_msgbox" >应用程序
+<!--     <p style="position:absolute;
+font-weight:bold;left:10px;top:8px;"></p> -->
+    <!-- <img src="dlg_msgbox.png"/> -->
+    <div id="dlg_close7" class="dialog_close" dlg="dlg_add_process"></div>
+  </div>
+  <div style="margin-left:16px;">
+    <table width="312"   border="0">
+      <tr>
+        <td width="60">分类：</td>
+        <td width="242"><p id="process_class_c"></p></td>
+      </tr>
+      <tr>
+        <td height="35">名称：</td>
+        <td><input type="text" size="35" id="process_name"/></td>
+      </tr>
+      <tr>
+        <td height="27">进程名：</td>
+        <td><input type="text" size="35" id="process_key"/></td>
+      </tr>
+    </table>
+    <p style="color:red;display:none;" id="add_process_mes">不能为空！</p>
+  </div>
+  
+  <div class="dialog_bottom">
+    <p id="btn_add_process" class="btn"
+ style="width:auto;margin-left:45%;"
+ dlg="dlg_add_process">添加</p>
+  </div>
+</div>
+
+<div id="dlg_apply_multi" class="dialog" style="margin:auto;top:20%;display:none;">
+  <div class="dialog_header dialog_h1" style="width:686px;">选择用户
+<!--     <p class="dialog_header_t" class="dialog_h1"></p>
+    <img src="dialog_h3.png" /> -->
+    <div id="dlg_close8" class="dialog_close" dlg="dlg_apply_multi"></div>
+  </div>
+  <widget id="users_tree" class="tree_apply_multi" type="select" style="margin-left:20px;"> </widget>
+  <p style="margin-left:20px;">注意：离线的被控端将不会收到消息</p>
+  <div style="height:36px;bottom:0px;background-color:#DADCE2;flow: horizontal;">
+    <p id="apply_multi" class="btn" style="width:auto;margin-left:45%;"
+ dlg="dlg_apply_multi">应 用</p>
+  </div>
+  <!-- <div style="display:none;height:18px;width:0%%;background-color:gray" id="notice_mul"></div> --> 
+</div>
+
+<div id="dlg_add_member" focus="tree_input" class="dialog"
+style="display:none;top:36%%;left:66%%;">
+  <div class="dialog_header dlg_input" >编辑IP地址 <!-- <img src="dlg_input_ip.png" /> -->
+    <div id="dlg_close1" class="dialog_close"></div>
+  </div>
+  <p style="margin-left:12px;">请输入被控端ip：</p>
+  <p>
+    <input id="tree_input" type="text" value="" style="margin-left:12px;"/>
+  </p>
+  <div class="dialog_bottom">
+    <p id="btn_add_member" class="btn" style="width:auto;margin-left:40%%;">确定</p>
+    <p class="btn" style="width:auto;margin-left:6px;">取消</p>
+  </div>
+</div>
+
+<div id="dlg_add_group" focus="tree_input2" class="dialog" style="display:none;margin:auto;top:36%%;">
+  <div class="dialog_header dlg_msgboxag" >编辑名称 <!-- <img src="dlg_input_group.png" /> -->
+    <div id="dlg_close2" class="dialog_close"></div>
+  </div>
+  <p style="margin-left:12px;">请输入新部门名称：</p>
+  <p>
+    <input id="tree_input2" type="text" size="42" style="margin-left:12px;"/>
+  </p>
+
+  <div class="dialog_bottom">
+    <p id="btn_add_group" class="btn" style="width:auto;margin-left:48%%;">确定</p>
+    <p class="btn" style="width:auto;margin-left:6px;">取消</p>
+  </div>
+</div>
+
+<div id="dlg_update" class="dialog" style="display:none;margin:auto;top:36%%;">
+  <div class="dialog_header dlg_msgbox" >更新全部被控端
+<!--     <p style="position:absolute;
+font-weight:bold;left:10px;top:8px;"></p>
+    <img src="dlg_msgbox.png"/> -->
+    <div id="dlg_update_close" class="dialog_close" dlg="dlg_update"></div>
+  </div>
+  <p style="margin-left:12px;" >选择升级安装包(慎用)： <span class="btn" id="select_server">...</span></p>
+  <p style="margin-left:12px;">提示：当前断开连接的被控端，将不会收到更新命令</p>
+  <p style="margin-left:12px;">此命令及其危险！！！</p>
+  <!-- <p style="margin-left:12px;">提示：当前断开连接的被控端，在下一次连接后会自动更新</p> -->
+  <div class="dialog_bottom">
+    <p id="btn_update" class="btn"
+ style="width:auto;margin-left:45%;"
+ dlg="dlg_update">更新</p>
+  </div>
+</div>
+
+<div id="dlg_about" class="dialog" style="height:346px;width:404px;background-image:url(dlg_about.jpg);display:none;margin:auto;top:36%%;padding:7px;font-weight:bold;">
+  <div class="dialog_header dlg_msgbox" style="width:394px;background-color:transparent;">About
+    <!-- <p style="position:absolute;font-weight:bold;left:10px;top:8px;"></p> -->
+    <div id="dlg_about_close" class="dialog_close" dlg="dlg_about" ></div> <!-- style="position:relative;left:368px" -->
+  </div>
+  <div style="width:373px;height:99px;background-image:url(shujvkuang.png);margin-left:16px;margin-top:10px;flow:horizontal;">
+	<div style="width:179px;height:99px;vertical-align:middle;horizontal-align:center;">
+		<p style="width:124px;height:37px;background-image:url(aboutlogo.png);"></p>
+	</div>
+	<div style="font-size:13px;color:white;font-weight:normal;padding-top:5px;">
+		<p>Program Information <span id="about_lic_user" style="color:#EBD5B7;">Verified</span> </p>
+		<p>Client Version：8.20</span> </p>
+		<p>Unlimited Version</span> </p>
+	</div>
+  </div>
+  <div style="color:white;font-size:14px;font-weight:bold;margin-top:20px;margin-left:40px;">
+  <!--  <p style="margin-top:20px;">QQ：2292086428 <a href="https://www.lllll.pub" id="aboutQQ"></a> </p> -->
+  <p>This Program Is A Part Of LLLLL Projects</span> </p>
+  <p>Project ID: 0019 - Client</span> </p>
+	<p style="color:#C0C3CC;font-size:12px;margin-top:20px;font-weight:normal;">Official Website: <a href="https://www.lllll.pub" title="Official Website" style="color:#C0C3CC;">www.lllll.pub</a></p>
+  <p style="color:#C0C3CC;font-size:12px;margin-top:20px;font-weight:normal;">LLLLL (C) 2005-2021</p>
+  <p style="color:#C0C3CC;font-size:12px;margin-top:20px;font-weight:normal;">Stark Industrues 1940-2021</p>
+  </div>
+
+  <div style="margin:0px;paddgin:0px">
+    <p id="btn_ok_about" dlg="dlg_about" class="setbtn" style="width:auto;margin-left:50%%;">OK</p>
+  </div>
+</div>
+
+<div id="dlg_connect_server" focus="server_ip" class="dialog" style="display:none;margin:auto;top:36%%;">
+  <div class="dialog_header dlg_msgboxah" >连接被控端
+<!--     <p style="position:absolute;
+font-weight:bold;left:10px;top:8px;"></p>
+    <img src="dlg_msgbox.png"/> -->
+    <div id="dlg_cs_close" class="dialog_close" dlg="dlg_connect_server"></div>
+  </div>
+  <p style="margin-left:12px;">请输入要连接的IP：</p>
+  <p>
+    <input id="server_ip" type="text" size="50" style="margin-left:12px;"/>
+  </p>
+  <p style="margin-left:12px;color:red;display:none;" id="error_mes1">IP格式不正确！</p>
+  <div class="dialog_bottom">
+    <p id="btn_connect_server" class="btn"
+ style="width:auto;margin-left:45%%;"
+ dlg="dlg_connect_server">连接</p>
+  </div>
+</div>
+
+<div id="dlg_settings" class="dialog" style="background-image:url(setbg.png);display:none;margin:auto;top:36%%;padding:6px;width:404px;">
+  <div class="dialog_header dlg_msgbox" style="height:48px;width:390px;">高级设置 <!-- width:390px;height:313px;width:396px; -->
+<!--     <p style="position:absolute;
+font-weight:bold;left:10px;top:8px;"></p>
+    <img src="dlg_msgbox.png"/> -->
+    <div id="settings_close" class="dialog_close" dlg="dlg_settings"></div>
+  </div>
+  <div style="margin-left:22px;margin-top:15px;margin-bottom:20px;">
+    <div>
+      <button id="settings_chk_auto_run" type="checkbox"> 开机自动运行</button>
+    </div>
+    <div>
+      <button id="settings_chk_enable_notifyicon" type="checkbox"> 最小化到托盘</button>
+    </div>
+    
+	<div><button id="settings_chk_autoscan" type="checkbox">
+	启动后自动搜索局域网主机</button>
+	</div>
+    
+    <div>
+      <button id="settings_chk_alarm_audio" type="checkbox"> 报警时播放提示音</button>
+    </div>
+    <div>
+      <button id="settings_chk_loginpwd" type="checkbox"> 登录软件需要密码</button>
+    </div>
+    <input id="settings_edt_loginpwd" size="30" type="password" style="margin-left:20px;" disabled="disabled" />
+    <div style="margin-top:5px;">
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分组连接密码,管理端和被控端的连接密码必须一致</p>
+      <input id="settings_edt_loginid" size="30" type="text" style="margin-left:20px;" />
+    </div>
+    <div> <span id="settings_btn_modify_pwd" class="btn" style="margin-left:10px;display:none" dlg="dlg_modify_pwd" disabled="disabled" >修改密码</span> <span id="settings_lbl_modify_pwd_success"  style="color: #0080FF;display:none">修改成功!</span> </div>
+  </div>
+  <div class="dialog_bottom" style="background-color:transparent;">
+    <p id="settings_btn_apply" class="setbtn"
+ style="margin-left:50%%;"
+ dlg="dlg_settings">确定</p>
+    <p id="settings_btn_cancel" class="setbtn" style="margin-left:15px;" dlg="dlg_settings">取消</p>
+  </div>
+</div>
+
+<div id="dlg_modify_pwd" focus="mp_new_pwd"  class="dialog" style="display:none;margin:auto;top:36%%;">
+  <div class="dialog_header dlg_msgbox" >修改密码
+<!--     <p style="position:absolute;
+font-weight:bold;left:10px;top:8px;"></p>
+    <img src="dlg_msgbox.png"/> -->
+    <div id="mp_btn_close" class="dialog_close" dlg="dlg_modify_pwd"></div>
+  </div>
+  <p style="margin-left:12px;"><span style="width:80px;display:inline-block">新密码：</span>
+    <input id="mp_new_pwd" type="password"/>
+  </p>
+  <p style="margin-left:12px;"><span style="width:80px;display:inline-block">再次输入：</span>
+    <input id="mp_retype" type="password"/>
+  </p>
+  <div class="dialog_bottom">
+    <p id="mp_btn_apply_pwd" class="btn" style="width:auto;margin-left:45%%;"
+ dlg="dlg_modify_pwd">确定</p>
+  </div>
+</div>
+
+<div id="dlg_uninstall" class="dialog" style="margin:auto;top:36%%;display:none;">
+  <div class="dialog_header dlg_input"> 提示 <!-- <img src="notice.png" /> --> </div>
+  <p style="margin-left:12px;height:45px;">你确定要卸载这台主机吗？</p>
+  <div class="dialog_bottom">
+    <p id="btn_uninstall" class="btn"
+ style="width:auto;margin-left:40%%;" dlg="dlg_uninstall">马上卸载</p>
+    <p id="btn_uninstall_cancel" class="btn" 
+style="margin-left:6px;"
+dlg="dlg_uninstall">取消</p>
+  </div>
+</div>
+
+<div id="dlg_notice_update" class="dialog" style="margin:0 auto;top:36%%;display:none;">
+  <div class="dialog_header dlg_input"> 提示 <!--  <img src="notice.png" /> --> </div>
+  <p style="margin-left:12px;margin-right:12px;">更新命令已发送，等待被控端更新...</p>
+</div>
+<div id="dlg_notice_select" class="dialog" style="margin:auto;top:36%%;display:none;">
+  <div class="dialog_header dlg_input"> 提示 <!--  <img src="notice.png" /> --> </div>
+  <p style="margin-left:12px;margin-right:12px;">请选中一个在线的用户</p>
+</div>
+
+
+</div>
+<div id="apply_ok" class="trans" style="display:none;border-radius:5px;font-size:16px;
+position:absolute;margin:auto;top:128px;background-color:#696969;color:white;width:auto;padding:20px;"> 应用成功 </div>
+
+<!-- <div id="dlg_table_filter" class="dialog" style="display:none;margin:0 auto;top:45%%;">
+<div class="dialog_header">
+<p style="position:absolute;
+font-weight:bold;left:10px;top:8px;">筛选</p>
+<img src="dlg_msgbox.png"/>
+<div id="tf_close" class="dialog_close" dlg="dlg_table_filter"></div>
+</div>
+<p style="margin:12px;">
+日期： <input id="date_from" type="date" value="today"/>到<input id="date_to" type="date" value="today"/>
+</p>
+
+<div class="dialog_bottom">
+<p id="tf_ok" class="btn" style="width:auto;margin-left:48%%;">确定</p>
+<p id="tf_cancel" class="btn" dlg="dlg_table_filter" style="width:auto;margin-left:6px;">取消</p>
+</div>
+
+</div> -->
+
+<div id="dlg_export" style="display:none;position:absolute;background-color:white;
+padding:10px;border:1px solid #98BAE7;margin:0 auto;top:60%%;width:300px;">
+  <p>正在导出第<span id="exp_num">1</span>项记录......</p>
+  <span id="exp_close" dlg="dlg_export" style="position:absolute;right:4px;top:0px;">X</span> </div>
+<div id="tabmenu" style="display:none;behavior:popup-menu;background-color:#BCE3FA;width:auto;"> 更多 <menu .context> </menu> </div>
+</body>
+</html>
